@@ -68,12 +68,12 @@ class AxisJoystick final {
 		/**
 			Enums of a possible pressings 
 			of the joystick controller:
-			PRESS - is pressed;
-			UP - is pressed up;
-			DOWN - is pressed down;
-			RIGTH - is pressed right;
-			LEFT - is pressed left;
-			NOT - is not pressed.
+				PRESS - button is pressed;
+				UP - X axis is pressed up;
+				DOWN - X axis is pressed down;
+				RIGTH - Y axis is pressed right;
+				LEFT - Y axis is pressed left;
+				NOT - not pressed.
 		*/
 		enum Move {
 			PRESS, UP, DOWN, RIGHT, LEFT, NOT
@@ -162,6 +162,9 @@ class AxisJoystick final {
 		int yAxis();
 	
 	private:
+		/**
+			Initialization of module.
+		*/
 		void init();
 };
 
