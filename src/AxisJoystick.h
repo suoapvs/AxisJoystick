@@ -163,7 +163,7 @@ class AxisJoystick final {
 	
 	private:
 		/**
-			Initialization of module.
+			Initialization of the module.
 		*/
 		void init();
 };
