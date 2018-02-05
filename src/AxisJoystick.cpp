@@ -61,7 +61,7 @@ AxisJoystick::Move AxisJoystick::singleRead() {
 		NOT - otherwise.
 */
 AxisJoystick::Move AxisJoystick::multipleRead() {
-	Move move = Move::NOT;
+	Move move;
 	if (isPress()) {
 		move = Move::PRESS;
 	} else if (isUp()) {
@@ -72,6 +72,8 @@ AxisJoystick::Move AxisJoystick::multipleRead() {
 		move = Move::RIGHT;
 	} else if (isLeft()) {
 		move = Move::LEFT;
+	} else {
+		move = Move::NOT;
 	}
 	return move;
 }
