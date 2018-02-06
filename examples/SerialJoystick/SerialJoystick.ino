@@ -1,5 +1,5 @@
 /*
-  AxisJoystick
+  Axis Joystick
 
   Reads a press of the joystick and displays information 
   in the default Serial.
