@@ -69,10 +69,10 @@ class AxisJoystick final {
 			Enums of a possible pressings 
 			of the joystick controller:
 				PRESS - button is pressed;
-				UP - X axis is pressed up;
-				DOWN - X axis is pressed down;
-				RIGTH - Y axis is pressed right;
-				LEFT - Y axis is pressed left;
+				UP - X axis is pressed UP;
+				DOWN - X axis is pressed DOWN;
+				RIGTH - Y axis is pressed RIGHT;
+				LEFT - Y axis is pressed LEFT;
 				NOT - not pressed.
 		*/
 		enum Move {
@@ -94,9 +94,9 @@ class AxisJoystick final {
 	public:
 		/**
 			Constructor.
-			@param SW_pin - a digital port number of a button.
-			@param VRx_pin - a analog port number of X axis.
-			@param VRy_pin - a analog port number of Y axis.
+			@param SW_pin - a digital port pin of a button.
+			@param VRx_pin - a analog port pin of X axis.
+			@param VRy_pin - a analog port pin of Y axis.
 		*/
 		AxisJoystick(const int SW_pin, const int VRx_pin, const int VRy_pin);
 
@@ -110,6 +110,8 @@ class AxisJoystick final {
 
 		/**
 			Multiple reading of the joystick controller.
+			If the joystick is clamped, 
+			returns a pressed button value.
 			@return value of pressing the joystick.
 		*/
 		Move multipleRead();

@@ -31,12 +31,12 @@ void AxisJoystick::init() {
 	If the joystick is clamped, the next 
 	value of pressing - NOT.
 	@return value of pressing the joystick:
-		PRESS - button is pressed;
-		UP - X axis is pressed up;
-		DOWN - X axis is pressed down;
-		RIGTH - Y axis is pressed right;
-		LEFT - Y axis is pressed left;
-		NOT - otherwise.
+		Move::PRESS - button is pressed;
+		Move::UP - X axis is pressed up;
+		Move::DOWN - X axis is pressed down;
+		Move::RIGTH - Y axis is pressed right;
+		Move::LEFT - Y axis is pressed left;
+		Move::NOT - not pressed.
 */
 AxisJoystick::Move AxisJoystick::singleRead() {
   Move move;
@@ -53,12 +53,12 @@ AxisJoystick::Move AxisJoystick::singleRead() {
 /**
 	Multiple reading of the joystick controller.
 	@return value of pressing the joystick:
-		PRESS - button is pressed;
-		UP - X axis is pressed up;
-		DOWN - X axis is pressed down;
-		RIGTH - Y axis is pressed right;
-		LEFT - Y axis is pressed left;
-		NOT - otherwise.
+		Move::PRESS - button is pressed;
+		Move::UP - X axis is pressed up;
+		Move::DOWN - X axis is pressed down;
+		Move::RIGTH - Y axis is pressed right;
+		Move::LEFT - Y axis is pressed left;
+		Move::NOT - not pressed.
 */
 AxisJoystick::Move AxisJoystick::multipleRead() {
 	Move move;
