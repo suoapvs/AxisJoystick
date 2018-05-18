@@ -1,9 +1,9 @@
 /**
-	The class implements a set of methods of the AxisJoystick.h 
+	The class implements a set of methods of the AxisJoystick.h
 	interface for working with a joystick controller.
 
 	https://github.com/YuriiSalimov/AxisJoystick
-	
+
 	Created by Yurii Salimov, February, 2018.
 	Released into the public domain.
 */
@@ -28,7 +28,7 @@ void AxisJoystick::init() {
 
 /**
 	Single reading of the joystick controller.
-	If the joystick is clamped, the next 
+	If the joystick is clamped, the next
 	value of pressing - NOT.
 	@return value of pressing the joystick:
 		Move::PRESS - button is pressed;
@@ -39,15 +39,12 @@ void AxisJoystick::init() {
 		Move::NOT - not pressed.
 */
 AxisJoystick::Move AxisJoystick::singleRead() {
-  Move move;
   const Move joystickMove = multipleRead();
   if (joystickMove != this->previousMove) {
-    move = joystickMove;
     this->previousMove = joystickMove;
-  } else {
-    move = Move::NOT;
+		return joystickMove;
   }
-  return move;
+  return Move::NOT;
 }
 
 /**
@@ -61,21 +58,18 @@ AxisJoystick::Move AxisJoystick::singleRead() {
 		Move::NOT - not pressed.
 */
 AxisJoystick::Move AxisJoystick::multipleRead() {
-	Move move;
 	if (isPress()) {
-		move = Move::PRESS;
+		return Move::PRESS;
 	} else if (isUp()) {
-		move = Move::UP;
+		return Move::UP;
 	} else if (isDown()) {
-		move = Move::DOWN;
+		return Move::DOWN;
 	} else if (isRight()) {
-		move = Move::RIGHT;
+		return Move::RIGHT;
 	} else if (isLeft()) {
-		move = Move::LEFT;
-	} else {
-		move = Move::NOT;
+		return Move::LEFT;
 	}
-	return move;
+	return Move::NOT;
 }
 
 boolean AxisJoystick::isPress() {
@@ -101,7 +95,7 @@ boolean AxisJoystick::isLeft() {
 int AxisJoystick::xAxis() {
 	return analogRead(this->VRx_pin);
 }
-	
+
 int AxisJoystick::yAxis() {
 	return analogRead(this->VRy_pin);
 }
