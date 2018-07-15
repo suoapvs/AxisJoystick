@@ -7,18 +7,18 @@
 ########################################
 
 AxisJoystick	KEYWORD1
-Move			KEYWORD1
+Move	KEYWORD1
 
 ########################################
 #   Methods and Functions (KEYWORD2)   #
 ########################################
 
-singleRead		KEYWORD2
+singleRead	KEYWORD2
 multipleRead	KEYWORD2
-isPress			KEYWORD2
-isUp			KEYWORD2
-isDown			KEYWORD2
-isRight			KEYWORD2
-isLeft			KEYWORD2
-xAxis			KEYWORD2
-yAxis			KEYWORD2
+isPress	KEYWORD2
+isUp	KEYWORD2
+isDown	KEYWORD2
+isRight	KEYWORD2
+isLeft	KEYWORD2
+xAxis	KEYWORD2
+yAxis	KEYWORD2
