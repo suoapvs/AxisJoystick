@@ -1,11 +1,11 @@
 /*
   Axis Joystick
 
-  Reads a press of the joystick and displays information 
+  Reads a press of the joystick and displays information
   in the default Serial.
 
   https://github.com/YuriiSalimov/AxisJoystick
-  
+
   Created by Yurii Salimov, February, 2018.
   Released into the public domain.
 */
@@ -25,14 +25,14 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  Serial.print("| SR: " + String(joystic->singleRead()));
-  Serial.print(" | MR: " + String(joystic->multipleRead()));
+  Serial.print("| SingleRead: " + String(joystic->singleRead()));
+  Serial.print(" | MultipleRead: " + String(joystic->multipleRead()));
   Serial.print(" | Press: " + String(joystic->isPress()));
   Serial.print(" | Up: " + String(joystic->isUp()));
   Serial.print(" | Down: " + String(joystic->isDown()));
   Serial.print(" | Right: " + String(joystic->isRight()));
   Serial.print(" | Left: " + String(joystic->isLeft()));
-  Serial.print(" | X: " + String(joystic->xAxis()));
-  Serial.println(" | Y: " + String(joystic->yAxis()) + " |");
+  Serial.print(" | VRx: " + String(joystic->readVRx()));
+  Serial.print(" | VRy: " + String(joystic->readVRy()));
+  Serial.println(" | SW: " + String(joystic->readSW()) + " |");
 }
-
