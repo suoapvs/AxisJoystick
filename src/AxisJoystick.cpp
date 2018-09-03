@@ -73,29 +73,43 @@ AxisJoystick::Move AxisJoystick::multipleRead() {
 }
 
 boolean AxisJoystick::isPress() {
-	return digitalRead(this->SW_pin) == JOYSTICK_BUTTON_PRESS_SIGNAL;
+	return readSW() == JOYSTICK_BUTTON_PRESS_SIGNAL;
 }
 
 boolean AxisJoystick::isUp() {
-	return xAxis() >= JOYSTICK_AXIS_HIGH_RANGE;
+	return readVRx() >= JOYSTICK_AXIS_HIGH_RANGE;
 }
 
 boolean AxisJoystick::isDown() {
-	return xAxis() <= JOYSTICK_AXIS_LOW_RANGE;
+	return readVRx() <= JOYSTICK_AXIS_LOW_RANGE;
 }
 
 boolean AxisJoystick::isRight() {
-	return yAxis() >= JOYSTICK_AXIS_HIGH_RANGE;
+	return readVRy() >= JOYSTICK_AXIS_HIGH_RANGE;
 }
 
 boolean AxisJoystick::isLeft() {
-	return yAxis() <= JOYSTICK_AXIS_LOW_RANGE;
+	return readVRy() <= JOYSTICK_AXIS_LOW_RANGE;
 }
 
-int AxisJoystick::xAxis() {
+int AxisJoystick::readVRx() {
 	return analogRead(this->VRx_pin);
 }
 
-int AxisJoystick::yAxis() {
+int AxisJoystick::readVRy() {
 	return analogRead(this->VRy_pin);
+}
+
+int AxisJoystick::readSW() {
+	return digitalRead(this->SW_pin);
+}
+
+// @Deprecated
+int AxisJoystick::xAxis() {
+	return readVRx();
+}
+
+// @Deprecated
+int AxisJoystick::yAxis() {
+	return readVRy();
 }
