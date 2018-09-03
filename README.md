@@ -5,23 +5,23 @@ For Arduino boards.
 The Library implements a set of methods for working with an axis joystick controller.
 Dual axis XY joystick module reading.
 
-The Analog Joystick is similar to two potentiometers connected together, 
-one for the vertical movement (Y-axis) and other for the horizontal movement (X-axis). 
+The Analog Joystick is similar to two potentiometers connected together,
+one for the vertical movement (Y-axis) and other for the horizontal movement (X-axis).
 The joystick also comes with a button.
 
-The Arduino Uno or any other Arduino board that uses Atmega328 as the Microcontroller 
+The Arduino Uno or any other Arduino board that uses Atmega328 as the Microcontroller
 has ADC resolution of 10 bits. Hence the values on each analog channel can vary from 0 to 1023.
 
-The home position for the stick is at (x,y:511,511). If the stick is moved on X axis 
-from one end to the other, the X values will change from 0 to 1023 and similar thing 
-happens when moved along the Y axis. On the same lines you can read position of the 
+The home position for the stick is at (x,y:511,511). If the stick is moved on X axis
+from one end to the other, the X values will change from 0 to 1023 and similar thing
+happens when moved along the Y axis. On the same lines you can read position of the
 stick anywhere in upper half hemisphere from combination of these values.
 
 ## Installation
 
 1. [Download](https://github.com/YuriiSalimov/AxisJoystick/releases) the Latest release from gitHub.
 2. Unzip and modify the Folder name to "AxisJoystick" (Remove the '-version')
-3. Paste the modified folder on your Library folder 
+3. Paste the modified folder on your Library folder
 (On your `libraries` folder inside Sketchbooks or Arduino software).
 4. Restart the Arduino IDE.
 
@@ -40,7 +40,7 @@ stick anywhere in upper half hemisphere from combination of these values.
 	AxisJoystick joystick(SW, VRx, VRy);
 
 	/**
-		Enums of a possible pressings 
+		Enums of a possible pressings
 		of the joystick controller:
 			PRESS - button is pressed;
 			UP - X axis is pressed up;
@@ -55,7 +55,7 @@ stick anywhere in upper half hemisphere from combination of these values.
 
 	/**
 		Single reading of the joystick controller.
-		If the joystick is clamped, the next 
+		If the joystick is clamped, the next
 		value of pressing - NOT.
 		Return value of pressing the joystick:
 			Move::PRESS - button is pressed;
@@ -69,7 +69,7 @@ stick anywhere in upper half hemisphere from combination of these values.
 
 	/**
 		Multiple reading of the joystick controller.
-		If the joystick is clamped, 
+		If the joystick is clamped,
 		returns a pressed button value.
 		Return value of pressing the joystick:
 			Move::PRESS - button is pressed;
@@ -83,44 +83,47 @@ stick anywhere in upper half hemisphere from combination of these values.
 
 	/**
 		Checks if the joystick button is pressed.
-		Return true - button is pressed, 
+		Return true - button is pressed,
 		false - button is not pressed.
 	*/
 	joystick.isPress();
 
 	/**
 		Checks if the joystick is pressed up (X axis).
-		Return true - joystick is pressed up, 
+		Return true - joystick is pressed up,
 		false - joystick is not pressed.
 	*/
 	joystick.isUp();
 
 	/**
 		Checks if the joystick is pressed down (X axis).
-		Return true - joystick is pressed down, 
+		Return true - joystick is pressed down,
 		false - joystick is not pressed.
 	*/
 	joystick.isDown();
 
 	/**
 		Checks if the joystick is pressed right (Y axis).
-		Return true - joystick is pressed right, 
+		Return true - joystick is pressed right,
 		false - joystick is not pressed.
 	*/
 	joystick.isRight();
 
 	/**
 		Checks if the joystick is pressed left (Y axis).
-		Return true - joystick is pressed left, 
+		Return true - joystick is pressed left,
 		false - joystick is not pressed.
 	*/
 	joystick.isLeft();
 
-	// Returns the joystick X axis coordinate.
-	joystick.xAxis();
+	// Returns the joystick X axis coordinate  (VRx).
+	joystick.readVRx();
 
-	// Returns the joystick Y axis coordinate.
-	joystick.yAxis();
+	// Returns the joystick Y axis coordinate  (VRy).
+	joystick.readVRy();
+
+	// Returns the joystick button signal (SW).
+	joystick.readSW();
 ```
 
 Created by Yurii Salimov.
