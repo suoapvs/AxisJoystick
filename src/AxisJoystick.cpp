@@ -20,7 +20,7 @@ AxisJoystick::AxisJoystick(
 	init();
 }
 
-void AxisJoystick::init() {
+inline void AxisJoystick::init() {
 	pinMode(this->SW_pin, INPUT_PULLUP);
 	pinMode(this->VRx_pin, INPUT);
 	pinMode(this->VRy_pin, INPUT);

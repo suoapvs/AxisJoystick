@@ -2,6 +2,9 @@
 	AxisJoystick.h - The interface describes a set of methods
 	for working with a joystick controller.
 
+	v.1.0.3:
+	- optimized call of the init() method.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, February, 2018.
@@ -179,7 +182,7 @@ class AxisJoystick final {
 		/**
 			Initialization of the module.
 		*/
-		void init();
+		inline void init();
 };
 
 #endif
