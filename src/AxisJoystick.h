@@ -83,9 +83,9 @@ class AxisJoystick final {
 		};
 
 	private:
-		int SW_pin = 0;
-		int VRx_pin = 0;
-		int VRy_pin = 0;
+		int SW_pin;
+		int VRx_pin;
+		int VRy_pin;
 
 		/**
 			The value for the temporary storage
