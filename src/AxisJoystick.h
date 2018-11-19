@@ -101,7 +101,7 @@ class AxisJoystick final {
 			@param VRx_pin - a analog port pin of X axis.
 			@param VRy_pin - a analog port pin of Y axis.
 		*/
-		AxisJoystick(const int SW_pin, const int VRx_pin, const int VRy_pin);
+		AxisJoystick(int SW_pin, int VRx_pin, int VRy_pin);
 
 		/**
 			Single reading of the joystick controller.
