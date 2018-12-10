@@ -117,13 +117,12 @@ stick anywhere in upper half hemisphere from combination of these values.
 	joystick.isLeft();
 
 	// Returns the joystick X axis coordinate  (VRx).
-	joystick.readVRx();
+	joystick.xAxis();
 
 	// Returns the joystick Y axis coordinate  (VRy).
-	joystick.readVRy();
-
-	// Returns the joystick button signal (SW).
-	joystick.readSW();
+	joystick.yAxis();
 ```
+
+[See more examples...](examples)
 
 Created by Yurii Salimov.
