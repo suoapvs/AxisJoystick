@@ -1,12 +1,3 @@
-/**
-	The class implements a set of methods of the AxisJoystick.h
-	interface for working with a joystick controller.
-
-	https://github.com/YuriiSalimov/AxisJoystick
-
-	Created by Yurii Salimov, February, 2018.
-	Released into the public domain.
-*/
 #include "AxisJoystick.h"
 
 AxisJoystick::AxisJoystick(
@@ -26,19 +17,7 @@ inline void AxisJoystick::init() {
 	pinMode(this->VRy_pin, INPUT);
 }
 
-/**
-	Single reading of the joystick controller.
-	If the joystick is clamped, the next
-	value of pressing - NOT.
-	@return value of pressing the joystick:
-		Move::PRESS - button is pressed;
-		Move::UP - X axis is pressed up;
-		Move::DOWN - X axis is pressed down;
-		Move::RIGTH - Y axis is pressed right;
-		Move::LEFT - Y axis is pressed left;
-		Move::NOT - not pressed.
-*/
-AxisJoystick::Move AxisJoystick::singleRead() {
+Joystick::Move AxisJoystick::singleRead() {
   const Move joystickMove = multipleRead();
   if (joystickMove != this->previousMove) {
     this->previousMove = joystickMove;
@@ -51,13 +30,13 @@ AxisJoystick::Move AxisJoystick::singleRead() {
 	Multiple reading of the joystick controller.
 	@return value of pressing the joystick:
 		Move::PRESS - button is pressed;
-		Move::UP - X axis is pressed up;
-		Move::DOWN - X axis is pressed down;
-		Move::RIGTH - Y axis is pressed right;
-		Move::LEFT - Y axis is pressed left;
+		Move::UP - X-axis is pressed up;
+		Move::DOWN - X-axis is pressed down;
+		Move::RIGTH - Y-axis is pressed right;
+		Move::LEFT - Y-axis is pressed left;
 		Move::NOT - not pressed.
 */
-AxisJoystick::Move AxisJoystick::multipleRead() {
+Joystick::Move AxisJoystick::multipleRead() {
 	if (isPress()) {
 		return Move::PRESS;
 	} else if (isUp()) {
@@ -104,12 +83,10 @@ int AxisJoystick::readSW() {
 	return digitalRead(this->SW_pin);
 }
 
-// @Deprecated
 int AxisJoystick::xAxis() {
 	return readVRx();
 }
 
-// @Deprecated
 int AxisJoystick::yAxis() {
 	return readVRy();
 }

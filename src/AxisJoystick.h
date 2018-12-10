@@ -1,9 +1,12 @@
 /**
-	AxisJoystick.h - The interface describes a set of methods
-	for working with a joystick controller.
+	AxisJoystick.h - class implements methods of the Joystick.h
+	interface for working with an analog joystick controller.
 
 	v.1.0.3:
 	- optimized call of the init() method.
+
+	v.2.0:
+	- added implementation of the Joystick interface.
 
 	https://github.com/YuriiSalimov/AxisJoystick
 
@@ -13,11 +16,7 @@
 #ifndef AXIS_JOYSTICK_H
 #define AXIS_JOYSTICK_H
 
-#if defined(ARDUINO) && (ARDUINO >= 100)
-	#include <Arduino.h>
-#else
-	#include <WProgram.h>
-#endif
+#include "Joystick.h"
 
 /**
 	The value at which the joystick axis
@@ -65,22 +64,8 @@
 */
 #define JOYSTICK_BUTTON_PRESS_SIGNAL	LOW
 
-class AxisJoystick final {
-
-	public:
-		/**
-			Enums of a possible pressings
-			of the joystick controller:
-				PRESS - button is pressed;
-				UP - X axis is pressed UP;
-				DOWN - X axis is pressed DOWN;
-				RIGTH - Y axis is pressed RIGHT;
-				LEFT - Y axis is pressed LEFT;
-				NOT - not pressed.
-		*/
-		enum Move {
-			PRESS, UP, DOWN, RIGHT, LEFT, NOT
-		};
+// class
+class AxisJoystick final : public Joystick {
 
 	private:
 		int SW_pin;
@@ -98,85 +83,34 @@ class AxisJoystick final {
 		/**
 			Constructor.
 			@param SW_pin - a digital port pin of a button.
-			@param VRx_pin - a analog port pin of X axis.
-			@param VRy_pin - a analog port pin of Y axis.
+			@param VRx_pin - a analog port pin of X-axis.
+			@param VRy_pin - a analog port pin of Y-axis.
 		*/
 		AxisJoystick(int SW_pin, int VRx_pin, int VRy_pin);
 
-		/**
-			Single reading of the joystick controller.
-			If the joystick is clamped, the next
-			value of pressing - NOT.
-			@return value of pressing the joystick.
-		*/
-		Move singleRead();
+		Move singleRead() override;
 
-		/**
-			Multiple reading of the joystick controller.
-			If the joystick is clamped,
-			returns a pressed button value.
-			@return value of pressing the joystick.
-		*/
-		Move multipleRead();
+		Move multipleRead() override;
 
-		/**
-			Checks if the joystick button is pressed.
-			@return true - button is pressed,
-			false - button is not pressed.
-		*/
-		boolean isPress();
+		boolean isPress() override;
 
-		/**
-			Checks if the joystick is pressed up (X axis).
-			@return true - joystick is pressed up,
-			false - joystick is not pressed.
-		*/
-		boolean isUp();
+		boolean isUp() override;
 
-		/**
-			Checks if the joystick is pressed down (X axis).
-			@return true - joystick is pressed down,
-			false - joystick is not pressed.
-		*/
-		boolean isDown();
+		boolean isDown() override;
 
-		/**
-			Checks if the joystick is pressed right (Y axis).
-			@return true - joystick is pressed right,
-			false - joystick is not pressed.
-		*/
-		boolean isRight();
+		boolean isRight() override;
 
-		/**
-			Checks if the joystick is pressed left (Y axis).
-			@return true - joystick is pressed left,
-			false - joystick is not pressed.
-		*/
-		boolean isLeft();
+		boolean isLeft() override;
 
-		/**
-			Returns the joystick X axis coordinate (VRx).
-			@return X axis coordinate.
-		*/
-		int readVRx();
+		int readVRx() override;
 
-		/**
-			Returns the joystick Y axis coordinate (VRy).
-			@return Y axis coordinate.
-		*/
-		int readVRy();
+		int readVRy() override;
 
-		/**
-			Returns the joystick button signal (SW).
-			@return button signal.
-		*/
-		int readSW();
+		int readSW() override;
 
-		// @Deprecated
-		int xAxis();
+		int xAxis() override;
 
-		// @Deprecated
-		int yAxis();
+		int yAxis() override;
 
 	private:
 		/**
