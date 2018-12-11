@@ -34,8 +34,8 @@ stick anywhere in upper half hemisphere from combination of these values.
 ```cpp
 	/**
 		SW - a digital port number of a button.
-		VRx - a analog port number of X axis.
-		VRy - a analog port number of Y axis.
+		VRx - a analog port number of X-axis.
+		VRy - a analog port number of Y-axis.
 	*/
 	AxisJoystick joystick(SW, VRx, VRy);
 
@@ -43,10 +43,10 @@ stick anywhere in upper half hemisphere from combination of these values.
 		Enums of a possible pressings
 		of the joystick controller:
 			PRESS - button is pressed;
-			UP - X axis is pressed up;
-			DOWN - X axis is pressed down;
-			RIGTH - Y axis is pressed right;
-			LEFT - Y axis is pressed left;
+			UP - Y-axis is pressed up;
+			DOWN - Y-axis is pressed down;
+			RIGTH - X-axis is pressed right;
+			LEFT - X-axis is pressed left;
 			NOT - otherwise.
 	*/
 	enum Move {
@@ -59,10 +59,10 @@ stick anywhere in upper half hemisphere from combination of these values.
 		value of pressing - NOT.
 		Return value of pressing the joystick:
 			Move::PRESS - button is pressed;
-			Move::UP - X axis is pressed up;
-			Move::DOWN - X axis is pressed down;
-			Move::RIGTH - Y axis is pressed right;
-			Move::LEFT - Y axis is pressed left;
+			Move::UP - Y-axis is pressed up;
+			Move::DOWN - Y-axis is pressed down;
+			Move::RIGTH - X-axis is pressed right;
+			Move::LEFT - X-axis is pressed left;
 			Move::NOT - otherwise.
 	*/
 	joystick.singleRead();
@@ -73,10 +73,10 @@ stick anywhere in upper half hemisphere from combination of these values.
 		returns a pressed button value.
 		Return value of pressing the joystick:
 			Move::PRESS - button is pressed;
-			Move::UP - X axis is pressed up;
-			Move::DOWN - X axis is pressed down;
-			Move::RIGTH - Y axis is pressed right;
-			Move::LEFT - Y axis is pressed left;
+			Move::UP - Y-axis is pressed up;
+			Move::DOWN - Y-axis is pressed down;
+			Move::RIGTH - X-axis is pressed right;
+			Move::LEFT - X-axis is pressed left;
 			Move::NOT - otherwise.
 	*/
 	joystick.multipleRead();
@@ -89,28 +89,28 @@ stick anywhere in upper half hemisphere from combination of these values.
 	joystick.isPress();
 
 	/**
-		Checks if the joystick is pressed up (X axis).
+		Checks if the joystick is pressed up (Y-axis).
 		Return true - joystick is pressed up,
 		false - joystick is not pressed.
 	*/
 	joystick.isUp();
 
 	/**
-		Checks if the joystick is pressed down (X axis).
+		Checks if the joystick is pressed down (Y-axis).
 		Return true - joystick is pressed down,
 		false - joystick is not pressed.
 	*/
 	joystick.isDown();
 
 	/**
-		Checks if the joystick is pressed right (Y axis).
+		Checks if the joystick is pressed right (X-axis).
 		Return true - joystick is pressed right,
 		false - joystick is not pressed.
 	*/
 	joystick.isRight();
 
 	/**
-		Checks if the joystick is pressed left (Y axis).
+		Checks if the joystick is pressed left (X-axis).
 		Return true - joystick is pressed left,
 		false - joystick is not pressed.
 	*/

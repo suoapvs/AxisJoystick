@@ -30,10 +30,10 @@ Joystick::Move AxisJoystick::singleRead() {
 	Multiple reading of the joystick controller.
 	@return value of pressing the joystick:
 		Move::PRESS - button is pressed;
-		Move::UP - X-axis is pressed up;
-		Move::DOWN - X-axis is pressed down;
-		Move::RIGTH - Y-axis is pressed right;
-		Move::LEFT - Y-axis is pressed left;
+		Move::UP - Y-axis is pressed up;
+		Move::DOWN - Y-axis is pressed down;
+		Move::RIGTH - X-axis is pressed right;
+		Move::LEFT - X-axis is pressed left;
 		Move::NOT - not pressed.
 */
 Joystick::Move AxisJoystick::multipleRead() {

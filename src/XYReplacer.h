@@ -34,29 +34,29 @@ class XYReplacer final : public DelegateJoystick {
 		Move multipleRead() override;
 
 		/**
-			Checks if the joystick is pressed up (X-axis).
-			@return true - joystick is really pressed right (Y-axis),
+			Checks if the joystick is pressed up (Y-axis).
+			@return true - joystick is really pressed right (X-axis),
 			false - joystick is not pressed.
 		*/
 		boolean isUp() override;
 
 		/**
-			Checks if the joystick is pressed down (X-axis).
-			@return true - joystick is really pressed left (Y-axis),
+			Checks if the joystick is pressed down (Y-axis).
+			@return true - joystick is really pressed left (X-axis),
 			false - joystick is not pressed.
 		*/
 		boolean isDown() override;
 
 		/**
-			Checks if the joystick is pressed right (Y-axis).
-			@return true - joystick is really pressed up (X-axis),
+			Checks if the joystick is pressed right (X-axis).
+			@return true - joystick is really pressed up (Y-axis),
 			false - joystick is not pressed.
 		*/
 		boolean isRight() override;
 
 		/**
-			Checks if the joystick is pressed left (Y-axis).
-			@return true - joystick is really pressed down (X-axis),
+			Checks if the joystick is pressed left (X-axis).
+			@return true - joystick is really pressed down (Y-axis),
 			false - joystick is not pressed.
 		*/
 		boolean isLeft() override;

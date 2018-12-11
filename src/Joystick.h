@@ -64,28 +64,28 @@ class Joystick {
 		virtual boolean isPress() {}
 
 		/**
-			Checks if the joystick is pressed up (X-axis).
+			Checks if the joystick is pressed up (Y-axis).
 			@return true - joystick is pressed up,
 			false - joystick is not pressed.
 		*/
 		virtual boolean isUp() {}
 
 		/**
-			Checks if the joystick is pressed down (X-axis).
+			Checks if the joystick is pressed down (Y-axis).
 			@return true - joystick is pressed down,
 			false - joystick is not pressed.
 		*/
 		virtual boolean isDown() {}
 
 		/**
-			Checks if the joystick is pressed right (Y-axis).
+			Checks if the joystick is pressed right (X-axis).
 			@return true - joystick is pressed right,
 			false - joystick is not pressed.
 		*/
 		virtual boolean isRight() {}
 
 		/**
-			Checks if the joystick is pressed left (Y-axis).
+			Checks if the joystick is pressed left (X-axis).
 			@return true - joystick is pressed left,
 			false - joystick is not pressed.
 		*/
