@@ -56,19 +56,19 @@ boolean AxisJoystick::isPress() {
 }
 
 boolean AxisJoystick::isUp() {
-	return readVRx() >= JOYSTICK_AXIS_HIGH_RANGE;
-}
-
-boolean AxisJoystick::isDown() {
-	return readVRx() <= JOYSTICK_AXIS_LOW_RANGE;
-}
-
-boolean AxisJoystick::isRight() {
 	return readVRy() >= JOYSTICK_AXIS_HIGH_RANGE;
 }
 
-boolean AxisJoystick::isLeft() {
+boolean AxisJoystick::isDown() {
 	return readVRy() <= JOYSTICK_AXIS_LOW_RANGE;
+}
+
+boolean AxisJoystick::isRight() {
+	return readVRx() >= JOYSTICK_AXIS_HIGH_RANGE;
+}
+
+boolean AxisJoystick::isLeft() {
+	return readVRx() <= JOYSTICK_AXIS_LOW_RANGE;
 }
 
 int AxisJoystick::readVRx() {
