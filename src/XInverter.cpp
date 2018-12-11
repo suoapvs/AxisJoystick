@@ -15,23 +15,23 @@ Joystick::Move XInverter::multipleRead() {
 /**
 	Inverts the input joystick X-axis move.
 	@return value of pressing the joystick:
-		Move::UP - X axis is pressed down;
-		Move::DOWN - X axis is pressed up;
+		Move::RIGHT - X-axis is pressed left;
+		Move::LEFT - X-axis is pressed right;
 		else the input move.
 */
 Joystick::Move XInverter::invert(const Joystick::Move move) {
-  if (move == Move::UP) {
-		return Move::DOWN;
-	} else if (move == Move::DOWN) {
-		return Move::UP;
+  if (move == Move::LEFT) {
+		return Move::RIGHT;
+	} else if (move == Move::RIGHT) {
+		return Move::LEFT;
 	}
 	return move;
 }
 
-boolean XInverter::isUp() {
-	return this->joystick->isDown();
+boolean XInverter::isRight() {
+	return this->joystick->isLeft();
 }
 
-boolean XInverter::isDown() {
-	return this->joystick->isUp();
+boolean XInverter::isLeft() {
+	return this->joystick->isRight();
 }

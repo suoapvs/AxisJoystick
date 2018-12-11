@@ -34,18 +34,18 @@ class YInverter final : public DelegateJoystick {
 		Move multipleRead() override;
 
 		/**
-			Checks if the joystick is pressed right (Y-axis).
-			@return true - joystick is really pressed left,
+			Checks if the joystick is pressed up (Y-axis).
+			@return true - joystick is really pressed down,
 			false - joystick is not pressed.
 		*/
-		boolean isRight() override;
+		boolean isUp() override;
 
 		/**
-			Checks if the joystick is pressed left (Y-axis).
-			@return true - joystick is really pressed right,
+			Checks if the joystick is pressed down (Y-axis).
+			@return true - joystick is really pressed up,
 			false - joystick is not pressed.
 		*/
-		boolean isLeft() override;
+		boolean isDown() override;
 
   private:
 		/**

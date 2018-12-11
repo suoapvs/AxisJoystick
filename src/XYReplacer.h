@@ -1,6 +1,6 @@
 /**
 	XYReplacer.h - class-wrapper implements methods of the Joystick.h
-	interface, replacing X- and Y-axis signal of the delegate joystick.
+	interface, replacing X- and Y-axes signal of the delegate joystick.
 
 	v.2.0:
 	- created.
@@ -29,7 +29,7 @@ class XYReplacer final : public DelegateJoystick {
 
 		/**
 			Multiple reading of the joystick controller.
-			Replaces X- and Y-axis moves.
+			Replaces X- and Y-axes moves.
 		*/
 		Move multipleRead() override;
 

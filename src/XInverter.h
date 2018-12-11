@@ -34,18 +34,18 @@ class XInverter final : public DelegateJoystick {
 		Move multipleRead() override;
 
 		/**
-			Checks if the joystick is pressed up (X-axis).
-			@return true - joystick is really pressed down,
+			Checks if the joystick is pressed right (X-axis).
+			@return true - joystick is really pressed left,
 			false - joystick is not pressed.
 		*/
-		boolean isUp() override;
+		boolean isRight() override;
 
 		/**
-			Checks if the joystick is pressed down (X-axis).
-			@return true - joystick is really pressed up,
+			Checks if the joystick is pressed left (X-axis).
+			@return true - joystick is really pressed right,
 			false - joystick is not pressed.
 		*/
-		boolean isDown() override;
+		boolean isLeft() override;
 
   private:
 		/**

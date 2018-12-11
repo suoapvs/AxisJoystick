@@ -1,5 +1,5 @@
 /*
-  Replace and Invert X- and Y-axis of Joystick
+  Replace and Invert X- and Y-axes of Joystick
 
   Reads a press of the joystick and displays information
   in the default Serial.
