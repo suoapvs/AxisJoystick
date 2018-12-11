@@ -6,8 +6,8 @@
 	- optimized call of the init() method.
 
 	v.2.0:
-	- added implementation of the Joystick interface.
-	- replaced X and Y axes
+	- added implementation of the Joystick interface;
+	- replaced X and Y axes.
 
 	https://github.com/YuriiSalimov/AxisJoystick
 
