@@ -5,11 +5,11 @@ YInverter::YInverter(const Joystick* joystick)
 }
 
 Joystick::Move YInverter::singleRead() {
-  return invert(this->joystick->singleRead());
+	return invert(this->joystick->singleRead());
 }
 
 Joystick::Move YInverter::multipleRead() {
-  return invert(this->joystick->multipleRead());
+	return invert(this->joystick->multipleRead());
 }
 
 /**
@@ -20,7 +20,7 @@ Joystick::Move YInverter::multipleRead() {
 		else the input move.
 */
 Joystick::Move YInverter::invert(const Joystick::Move move) {
-  if (move == Move::UP) {
+	if (move == Move::UP) {
 		return Move::DOWN;
 	} else if (move == Move::DOWN) {
 		return Move::UP;

@@ -73,12 +73,12 @@ class XYReplacer final : public DelegateJoystick {
 		*/
 		int yAxis() override;
 
-  private:
+	private:
 		/**
 			Replaces the input move from X- to Y-axis
 			and from Y- to X-axis.
 		*/
-    Move replace(Move move);
+		Move replace(Move move);
 };
 
 #endif

@@ -18,12 +18,12 @@ inline void AxisJoystick::init() {
 }
 
 Joystick::Move AxisJoystick::singleRead() {
-  const Move joystickMove = multipleRead();
-  if (joystickMove != this->previousMove) {
-    this->previousMove = joystickMove;
+	const Move joystickMove = multipleRead();
+	if (joystickMove != this->previousMove) {
+		this->previousMove = joystickMove;
 		return joystickMove;
-  }
-  return Move::NOT;
+	}
+	return Move::NOT;
 }
 
 /**

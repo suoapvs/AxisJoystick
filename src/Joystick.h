@@ -37,7 +37,7 @@ class Joystick {
 	protected:
 		Joystick() {}
 
-  public:
+	public:
 		virtual ~Joystick() {}
 
 		/**

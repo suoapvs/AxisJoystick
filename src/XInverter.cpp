@@ -5,11 +5,11 @@ XInverter::XInverter(const Joystick* joystick)
 }
 
 Joystick::Move XInverter::singleRead() {
-  return invert(this->joystick->singleRead());
+	return invert(this->joystick->singleRead());
 }
 
 Joystick::Move XInverter::multipleRead() {
-  return invert(this->joystick->multipleRead());
+	return invert(this->joystick->multipleRead());
 }
 
 /**
@@ -20,7 +20,7 @@ Joystick::Move XInverter::multipleRead() {
 		else the input move.
 */
 Joystick::Move XInverter::invert(const Joystick::Move move) {
-  if (move == Move::LEFT) {
+	if (move == Move::LEFT) {
 		return Move::RIGHT;
 	} else if (move == Move::RIGHT) {
 		return Move::LEFT;

@@ -47,11 +47,11 @@ class YInverter final : public DelegateJoystick {
 		*/
 		boolean isDown() override;
 
-  private:
+	private:
 		/**
 			Inverts the input joystick Y-axis move.
 		*/
-    Move invert(Move move);
+		Move invert(Move move);
 };
 
 #endif

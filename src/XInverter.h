@@ -47,11 +47,11 @@ class XInverter final : public DelegateJoystick {
 		*/
 		boolean isLeft() override;
 
-  private:
+	private:
 		/**
 			Inverts the input joystick X-axis move.
 		*/
-    Move invert(Move move);
+		Move invert(Move move);
 };
 
 #endif
