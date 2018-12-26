@@ -24,7 +24,9 @@ class DelegateJoystick : public Joystick {
 	protected:
 		DelegateJoystick(const Joystick* joystick);
 
-  public:
+	public:
+		~DelegateJoystick() override;
+
 		virtual Move singleRead() override;
 
 		virtual Move multipleRead() override;

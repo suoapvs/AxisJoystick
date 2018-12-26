@@ -4,12 +4,16 @@ DelegateJoystick::DelegateJoystick(const Joystick* joystick) {
 	this->joystick = joystick;
 }
 
+DelegateJoystick::~DelegateJoystick() {
+	delete this->joystick;
+}
+
 Joystick::Move DelegateJoystick::singleRead() {
-  return this->joystick->singleRead();
+	return this->joystick->singleRead();
 }
 
 Joystick::Move DelegateJoystick::multipleRead() {
-  return this->joystick->multipleRead();
+	return this->joystick->multipleRead();
 }
 
 boolean DelegateJoystick::isPress() {
@@ -37,7 +41,7 @@ int DelegateJoystick::xAxis() {
 }
 
 int DelegateJoystick::yAxis() {
-		return this->joystick->yAxis();
+	return this->joystick->yAxis();
 }
 
 int DelegateJoystick::readVRx() {
