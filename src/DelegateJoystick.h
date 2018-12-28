@@ -19,10 +19,10 @@
 class DelegateJoystick : public Joystick {
 
 	protected:
-		Joystick* joystick;
+		const Joystick* origin;
 
 	protected:
-		DelegateJoystick(const Joystick* joystick);
+		DelegateJoystick(const Joystick* origin);
 
 	public:
 		~DelegateJoystick() override;

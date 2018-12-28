@@ -1,15 +1,15 @@
 #include "XYReplacer.h"
 
-XYReplacer::XYReplacer(const Joystick* joystick)
-	: DelegateJoystick(joystick) {
+XYReplacer::XYReplacer(const Joystick* origin)
+	: DelegateJoystick(origin) {
 }
 
 Joystick::Move XYReplacer::singleRead() {
-	return replace(this->joystick->singleRead());
+	return replace(this->origin->singleRead());
 }
 
 Joystick::Move XYReplacer::multipleRead() {
-	return replace(this->joystick->multipleRead());
+	return replace(this->origin->multipleRead());
 }
 
 Joystick::Move XYReplacer::replace(const Joystick::Move move) {
@@ -26,25 +26,25 @@ Joystick::Move XYReplacer::replace(const Joystick::Move move) {
 }
 
 boolean XYReplacer::isUp() {
-	return this->joystick->isRight();
+	return this->origin->isRight();
 }
 
 boolean XYReplacer::isDown() {
-	return this->joystick->isLeft();
+	return this->origin->isLeft();
 }
 
 boolean XYReplacer::isRight() {
-	return this->joystick->isUp();
+	return this->origin->isUp();
 }
 
 boolean XYReplacer::isLeft() {
-	return this->joystick->isDown();
+	return this->origin->isDown();
 }
 
 int XYReplacer::xAxis() {
-	return this->joystick->yAxis();
+	return this->origin->yAxis();
 }
 
 int XYReplacer::yAxis() {
-	return this->joystick->xAxis();
+	return this->origin->xAxis();
 }

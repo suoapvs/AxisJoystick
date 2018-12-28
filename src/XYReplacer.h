@@ -19,7 +19,7 @@
 class XYReplacer final : public DelegateJoystick {
 
 	public:
-		XYReplacer(const Joystick* joystick);
+		XYReplacer(const Joystick* origin);
 
 		/**
 			Single reading of the joystick controller.

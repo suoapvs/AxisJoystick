@@ -1,57 +1,57 @@
 #include "DelegateJoystick.h"
 
-DelegateJoystick::DelegateJoystick(const Joystick* joystick) {
-	this->joystick = joystick;
+DelegateJoystick::DelegateJoystick(const Joystick* origin) {
+	this->origin = origin;
 }
 
 DelegateJoystick::~DelegateJoystick() {
-	delete this->joystick;
+	delete this->origin;
 }
 
 Joystick::Move DelegateJoystick::singleRead() {
-	return this->joystick->singleRead();
+	return this->origin->singleRead();
 }
 
 Joystick::Move DelegateJoystick::multipleRead() {
-	return this->joystick->multipleRead();
+	return this->origin->multipleRead();
 }
 
 boolean DelegateJoystick::isPress() {
-	return this->joystick->isPress();
+	return this->origin->isPress();
 }
 
 boolean DelegateJoystick::isUp() {
-	return this->joystick->isUp();
+	return this->origin->isUp();
 }
 
 boolean DelegateJoystick::isDown() {
-	return this->joystick->isDown();
+	return this->origin->isDown();
 }
 
 boolean DelegateJoystick::isRight() {
-	return this->joystick->isRight();
+	return this->origin->isRight();
 }
 
 boolean DelegateJoystick::isLeft() {
-	return this->joystick->isLeft();
+	return this->origin->isLeft();
 }
 
 int DelegateJoystick::xAxis() {
-	return this->joystick->xAxis();
+	return this->origin->xAxis();
 }
 
 int DelegateJoystick::yAxis() {
-	return this->joystick->yAxis();
+	return this->origin->yAxis();
 }
 
 int DelegateJoystick::readVRx() {
-	return this->joystick->readVRx();
+	return this->origin->readVRx();
 }
 
 int DelegateJoystick::readVRy() {
-	return this->joystick->readVRy();
+	return this->origin->readVRy();
 }
 
 int DelegateJoystick::readSW() {
-	return this->joystick->readSW();
+	return this->origin->readSW();
 }

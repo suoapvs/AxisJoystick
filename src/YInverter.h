@@ -19,7 +19,7 @@
 class YInverter final : public DelegateJoystick {
 
 	public:
-		YInverter(const Joystick* joystick);
+		YInverter(const Joystick* origin);
 
 		/**
 			Single reading of the joystick controller.

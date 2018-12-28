@@ -19,7 +19,7 @@
 class XInverter final : public DelegateJoystick {
 
 	public:
-		XInverter(const Joystick* joystick);
+		XInverter(const Joystick* origin);
 
 		/**
 			Single reading of the joystick controller.
