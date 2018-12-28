@@ -5,6 +5,9 @@
 	v.2.0:
 	- created.
 
+	v.2.0.1
+	- added destructor.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, December, 2018.

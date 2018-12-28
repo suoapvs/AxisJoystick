@@ -4,6 +4,10 @@ DelegateJoystick::DelegateJoystick(const Joystick* origin) {
 	this->origin = origin;
 }
 
+/**
+	Destructor.
+	On deleting deletes the original joystick.
+*/
 DelegateJoystick::~DelegateJoystick() {
 	delete this->origin;
 }
