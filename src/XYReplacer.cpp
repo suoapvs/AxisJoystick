@@ -1,6 +1,6 @@
 #include "XYReplacer.h"
 
-XYReplacer::XYReplacer(const Joystick* origin)
+XYReplacer::XYReplacer(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 

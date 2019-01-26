@@ -1,6 +1,6 @@
 #include "DelegateJoystick.h"
 
-DelegateJoystick::DelegateJoystick(const Joystick* origin) {
+DelegateJoystick::DelegateJoystick(Joystick* origin) {
 	this->origin = origin;
 }
 

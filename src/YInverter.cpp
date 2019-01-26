@@ -1,6 +1,6 @@
 #include "YInverter.h"
 
-YInverter::YInverter(const Joystick* origin)
+YInverter::YInverter(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 

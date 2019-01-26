@@ -28,7 +28,7 @@ void setup() {
   original = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
   modified = new XYReplacer(
     new XInverter(
-      new XInverter(
+      new YInverter(
         original
       )
     )
