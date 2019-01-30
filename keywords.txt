@@ -30,3 +30,4 @@ yAxis	KEYWORD2
 readVRx	KEYWORD2
 readVRy	KEYWORD2
 readSW	KEYWORD2
+calibrate	KEYWORD2
