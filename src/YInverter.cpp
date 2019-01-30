@@ -5,20 +5,13 @@ YInverter::YInverter(Joystick* origin)
 }
 
 Joystick::Move YInverter::singleRead() {
-	return invert(this->origin->singleRead());
+	return invert(DelegateJoystick::singleRead());
 }
 
 Joystick::Move YInverter::multipleRead() {
-	return invert(this->origin->multipleRead());
+	return invert(DelegateJoystick::multipleRead());
 }
 
-/**
-	Inverts the input joystick Y-axis move.
-	@return value of pressing the joystick:
-		Move::UP - Y-axis is pressed down;
-		Move::DOWN - Y-axis is pressed up;
-		else the input move.
-*/
 Joystick::Move YInverter::invert(const Joystick::Move move) {
 	if (move == Move::UP) {
 		return Move::DOWN;
@@ -29,9 +22,9 @@ Joystick::Move YInverter::invert(const Joystick::Move move) {
 }
 
 boolean YInverter::isUp() {
-	return this->origin->isDown();
+	return DelegateJoystick::isDown();
 }
 
 boolean YInverter::isDown() {
-	return this->origin->isUp();
+	return DelegateJoystick::isUp();
 }

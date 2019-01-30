@@ -1,6 +1,6 @@
 /**
 	YInverter.h - class-wrapper implements methods of the Joystick.h
-	interface, inverting Y-axis signal of the delegate joystick.
+	interface, inverting Y-axis signal of the origin joystick.
 
 	v.2.0:
 	- created.
@@ -15,10 +15,13 @@
 
 #include "DelegateJoystick.h"
 
-// class
 class YInverter final : public DelegateJoystick {
 
 	public:
+		/**
+			Constructor.
+			@param origin - the origin joystick.
+		*/
 		YInverter(Joystick* origin);
 
 		/**
@@ -50,6 +53,10 @@ class YInverter final : public DelegateJoystick {
 	private:
 		/**
 			Inverts the input joystick Y-axis move.
+			@return value of pressing the joystick:
+				Move::UP - Y-axis is pressed down;
+				Move::DOWN - Y-axis is pressed up;
+				else the input move.
 		*/
 		Move invert(Move move);
 };

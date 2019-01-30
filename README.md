@@ -32,97 +32,116 @@ stick anywhere in upper half hemisphere from combination of these values.
 ## Methods
 
 ```cpp
-	/**
-		SW - a digital port number of a button.
-		VRx - a analog port number of X-axis.
-		VRy - a analog port number of Y-axis.
-	*/
-	AxisJoystick joystick(SW, VRx, VRy);
+/**
+    SW - a digital port number of a button.
+    VRx - a analog port number of X-axis.
+    VRy - a analog port number of Y-axis.
+*/
+AxisJoystick joystick(SW, VRx, VRy);
 
-	/**
-		Enums of a possible pressings
-		of the joystick controller:
-			PRESS - button is pressed;
-			UP - Y-axis is pressed up;
-			DOWN - Y-axis is pressed down;
-			RIGTH - X-axis is pressed right;
-			LEFT - X-axis is pressed left;
-			NOT - otherwise.
-	*/
-	enum Move {
-		PRESS, UP, DOWN, RIGHT, LEFT, NOT
-	};
+/**
+    Enums of a possible pressings
+    of the joystick controller:
+        PRESS - button is pressed;
+        UP - Y-axis is pressed up;
+        DOWN - Y-axis is pressed down;
+        RIGTH - X-axis is pressed right;
+        LEFT - X-axis is pressed left;
+        NOT - otherwise.
+*/
+enum Move {
+    PRESS, UP, DOWN, RIGHT, LEFT, NOT
+};
 
-	/**
-		Single reading of the joystick controller.
-		If the joystick is clamped, the next
-		value of pressing - NOT.
-		Return value of pressing the joystick:
-			Move::PRESS - button is pressed;
-			Move::UP - Y-axis is pressed up;
-			Move::DOWN - Y-axis is pressed down;
-			Move::RIGTH - X-axis is pressed right;
-			Move::LEFT - X-axis is pressed left;
-			Move::NOT - otherwise.
-	*/
-	joystick.singleRead();
+/**
+    Single reading of the joystick controller.
+    If the joystick is clamped, the next
+    value of pressing - NOT.
+    Return value of pressing the joystick:
+        Move::PRESS - button is pressed;
+        Move::UP - Y-axis is pressed up;
+        Move::DOWN - Y-axis is pressed down;
+        Move::RIGTH - X-axis is pressed right;
+        Move::LEFT - X-axis is pressed left;
+        Move::NOT - otherwise.
+*/
+joystick.singleRead();
 
-	/**
-		Multiple reading of the joystick controller.
-		If the joystick is clamped,
-		returns a pressed button value.
-		Return value of pressing the joystick:
-			Move::PRESS - button is pressed;
-			Move::UP - Y-axis is pressed up;
-			Move::DOWN - Y-axis is pressed down;
-			Move::RIGTH - X-axis is pressed right;
-			Move::LEFT - X-axis is pressed left;
-			Move::NOT - otherwise.
-	*/
-	joystick.multipleRead();
+/**
+    Multiple reading of the joystick controller.
+    If the joystick is clamped,
+    returns a pressed button value.
+    Return value of pressing the joystick:
+        Move::PRESS - button is pressed;
+        Move::UP - Y-axis is pressed up;
+        Move::DOWN - Y-axis is pressed down;
+        Move::RIGTH - X-axis is pressed right;
+        Move::LEFT - X-axis is pressed left;
+        Move::NOT - otherwise.
+*/
+joystick.multipleRead();
 
-	/**
-		Checks if the joystick button is pressed.
-		Return true - button is pressed,
-		false - button is not pressed.
-	*/
-	joystick.isPress();
+/**
+    Checks if the joystick button is pressed.
+    Return true - button is pressed,
+    false - button is not pressed.
+*/
+joystick.isPress();
 
-	/**
-		Checks if the joystick is pressed up (Y-axis).
-		Return true - joystick is pressed up,
-		false - joystick is not pressed.
-	*/
-	joystick.isUp();
+/**
+    Checks if the joystick is pressed up (Y-axis).
+    Return true - joystick is pressed up,
+    false - joystick is not pressed.
+*/
+joystick.isUp();
 
-	/**
-		Checks if the joystick is pressed down (Y-axis).
-		Return true - joystick is pressed down,
-		false - joystick is not pressed.
-	*/
-	joystick.isDown();
+/**
+    Checks if the joystick is pressed down (Y-axis).
+    Return true - joystick is pressed down,
+    false - joystick is not pressed.
+*/
+joystick.isDown();
 
-	/**
-		Checks if the joystick is pressed right (X-axis).
-		Return true - joystick is pressed right,
-		false - joystick is not pressed.
-	*/
-	joystick.isRight();
+/**
+    Checks if the joystick is pressed right (X-axis).
+    Return true - joystick is pressed right,
+    false - joystick is not pressed.
+*/
+joystick.isRight();
 
-	/**
-		Checks if the joystick is pressed left (X-axis).
-		Return true - joystick is pressed left,
-		false - joystick is not pressed.
-	*/
-	joystick.isLeft();
+/**
+    Checks if the joystick is pressed left (X-axis).
+    Return true - joystick is pressed left,
+    false - joystick is not pressed.
+*/
+joystick.isLeft();
 
-	// Returns the joystick X axis coordinate  (VRx).
-	joystick.xAxis();
+// Returns the joystick X axis coordinate  (VRx).
+joystick.xAxis();
 
-	// Returns the joystick Y axis coordinate  (VRy).
-	joystick.yAxis();
+// Returns the joystick Y axis coordinate  (VRy).
+joystick.yAxis();
+
+/**
+    Joystick axes calibration.
+    LOW - the lower bound of the value’s axis range;
+    HIGH - the upper bound of the value’s axis range;
+*/
+joystick.calibrate(LOW, HIGH);
+
+/**
+    Joystick axes calibration.
+    LOW - the lower bound of the value’s axis range;
+    HIGH - the upper bound of the value’s axis range;
+    DIVITION - Deviation from the value’s axis range,
+        when the axis is considered activated:
+        axis value <= (LOW + DIVITION)
+        or
+        axis value >= (HIGH - DIVITION).
+*/
+joystick.calibrate(LOW, HIGH, DIVITION);
 ```
 
-[See more examples...](examples)
+See [examples](/examples)...
 
 Created by Yurii Salimov.

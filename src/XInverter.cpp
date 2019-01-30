@@ -5,20 +5,13 @@ XInverter::XInverter(Joystick* origin)
 }
 
 Joystick::Move XInverter::singleRead() {
-	return invert(this->origin->singleRead());
+	return invert(DelegateJoystick::singleRead());
 }
 
 Joystick::Move XInverter::multipleRead() {
-	return invert(this->origin->multipleRead());
+	return invert(DelegateJoystick::multipleRead());
 }
 
-/**
-	Inverts the input joystick X-axis move.
-	@return value of pressing the joystick:
-		Move::RIGHT - X-axis is pressed left;
-		Move::LEFT - X-axis is pressed right;
-		else the input move.
-*/
 Joystick::Move XInverter::invert(const Joystick::Move move) {
 	if (move == Move::LEFT) {
 		return Move::RIGHT;
@@ -29,9 +22,9 @@ Joystick::Move XInverter::invert(const Joystick::Move move) {
 }
 
 boolean XInverter::isRight() {
-	return this->origin->isLeft();
+	return DelegateJoystick::isLeft();
 }
 
 boolean XInverter::isLeft() {
-	return this->origin->isRight();
+	return DelegateJoystick::isRight();
 }

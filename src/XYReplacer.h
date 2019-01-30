@@ -1,6 +1,6 @@
 /**
 	XYReplacer.h - class-wrapper implements methods of the Joystick.h
-	interface, replacing X- and Y-axes signal of the delegate joystick.
+	interface, replacing X- and Y-axes signal of the origin joystick.
 
 	v.2.0:
 	- created.
@@ -15,10 +15,13 @@
 
 #include "DelegateJoystick.h"
 
-// class
 class XYReplacer final : public DelegateJoystick {
 
 	public:
+		/**
+			Constructor.
+			@param origin - the origin joystick.
+		*/
 		XYReplacer(Joystick* origin);
 
 		/**
@@ -36,28 +39,28 @@ class XYReplacer final : public DelegateJoystick {
 		/**
 			Checks if the joystick is pressed up (Y-axis).
 			@return true - joystick is really pressed right (X-axis),
-			false - joystick is not pressed.
+				false - joystick is not pressed.
 		*/
 		boolean isUp() override;
 
 		/**
 			Checks if the joystick is pressed down (Y-axis).
 			@return true - joystick is really pressed left (X-axis),
-			false - joystick is not pressed.
+				false - joystick is not pressed.
 		*/
 		boolean isDown() override;
 
 		/**
 			Checks if the joystick is pressed right (X-axis).
 			@return true - joystick is really pressed up (Y-axis),
-			false - joystick is not pressed.
+				false - joystick is not pressed.
 		*/
 		boolean isRight() override;
 
 		/**
 			Checks if the joystick is pressed left (X-axis).
 			@return true - joystick is really pressed down (Y-axis),
-			false - joystick is not pressed.
+				false - joystick is not pressed.
 		*/
 		boolean isLeft() override;
 

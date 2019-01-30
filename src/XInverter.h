@@ -1,6 +1,6 @@
 /**
 	XInverter.h - class-wrapper implements methods of the Joystick.h
-	interface, inverting X-axis signal of the delegate joystick.
+	interface, inverting X-axis signal of the origin joystick.
 
 	v.2.0:
 	- created.
@@ -15,10 +15,13 @@
 
 #include "DelegateJoystick.h"
 
-// class
 class XInverter final : public DelegateJoystick {
 
 	public:
+		/**
+			Constructor.
+			@param origin - the origin joystick.
+		*/
 		XInverter(Joystick* origin);
 
 		/**
@@ -50,6 +53,10 @@ class XInverter final : public DelegateJoystick {
 	private:
 		/**
 			Inverts the input joystick X-axis move.
+			@return value of pressing the joystick:
+				Move::RIGHT - X-axis is pressed left;
+				Move::LEFT - X-axis is pressed right;
+				else the input move.
 		*/
 		Move invert(Move move);
 };

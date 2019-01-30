@@ -5,11 +5,11 @@ XYReplacer::XYReplacer(Joystick* origin)
 }
 
 Joystick::Move XYReplacer::singleRead() {
-	return replace(this->origin->singleRead());
+	return replace(DelegateJoystick::singleRead());
 }
 
 Joystick::Move XYReplacer::multipleRead() {
-	return replace(this->origin->multipleRead());
+	return replace(DelegateJoystick::multipleRead());
 }
 
 Joystick::Move XYReplacer::replace(const Joystick::Move move) {
@@ -26,25 +26,25 @@ Joystick::Move XYReplacer::replace(const Joystick::Move move) {
 }
 
 boolean XYReplacer::isUp() {
-	return this->origin->isRight();
+	return DelegateJoystick::isRight();
 }
 
 boolean XYReplacer::isDown() {
-	return this->origin->isLeft();
+	return DelegateJoystick::isLeft();
 }
 
 boolean XYReplacer::isRight() {
-	return this->origin->isUp();
+	return DelegateJoystick::isUp();
 }
 
 boolean XYReplacer::isLeft() {
-	return this->origin->isDown();
+	return DelegateJoystick::isDown();
 }
 
 int XYReplacer::xAxis() {
-	return this->origin->yAxis();
+	return DelegateJoystick::yAxis();
 }
 
 int XYReplacer::yAxis() {
-	return this->origin->xAxis();
+	return DelegateJoystick::xAxis();
 }
