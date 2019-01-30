@@ -22,11 +22,11 @@
 */
 #include <AxisJoystick.h>
 
-#define SW_PIN  5
+#define SW_PIN 5
 #define VRX_PIN A1
 #define VRY_PIN A2
 
-AxisJoystick* joystick;
+Joystick* joystick;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -36,22 +36,28 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  const AxisJoystick::Move move = joystick->multipleRead();
-  String moveTitle;
-  if (move == AxisJoystick::Move::PRESS) {
-    moveTitle = "PRESS";
-  } else if (move == AxisJoystick::Move::UP) {
-    moveTitle = "UP";
-  } else if (move == AxisJoystick::Move::DOWN) {
-    moveTitle = "DOWN";
-  } else if (move == AxisJoystick::Move::RIGHT) {
-    moveTitle = "RIGHT";
-  } else if (move == AxisJoystick::Move::LEFT) {
-    moveTitle = "LEFT";
-  } else {
-    moveTitle = "NOT";
-  }
-  Serial.println("Joystick, Multiple Reading: " + moveTitle);
+  Serial.print("Joystick, Multiple Reading: ");
+  Serial.println(moveTitle(joystick->multipleRead()));
   delay(500); // To delay the output of information.
 }
 
+/**
+  Return title of the input joystick move.
+*/
+String moveTitle(const Joystick::Move move) {
+  if (move == Joystick::Move::NOT) {
+    return "NOT";
+  } else if (move == Joystick::Move::PRESS) {
+    return "PRESS";
+  } else if (move == Joystick::Move::UP) {
+    return "UP";
+  } else if (move == Joystick::Move::DOWN) {
+    return "DOWN";
+  } else if (move == Joystick::Move::RIGHT) {
+    return "RIGHT";
+  } else if (move == Joystick::Move::LEFT) {
+    return "LEFT";
+  } else {
+    return "???";
+  }
+}

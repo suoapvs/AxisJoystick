@@ -14,7 +14,7 @@
 #include <XInverter.h>
 #include <YInverter.h>
 
-#define SW_PIN  5
+#define SW_PIN 5
 #define VRX_PIN A1
 #define VRY_PIN A2
 
@@ -32,15 +32,15 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  Serial.print("original: " + getMoveTitle(original->multipleRead()));
-  Serial.print(" | invert X: " + getMoveTitle(xInverter->multipleRead()));
-  Serial.println(" | invert Y: " + getMoveTitle(yInverter->multipleRead()));
+  Serial.print("original: " + moveTitle(original->multipleRead()));
+  Serial.print(" | invert X: " + moveTitle(xInverter->multipleRead()));
+  Serial.println(" | invert Y: " + moveTitle(yInverter->multipleRead()));
 }
 
 /**
   Return title of the input joystick move.
 */
-String getMoveTitle(const Joystick::Move move) {
+String moveTitle(const Joystick::Move move) {
   if (move == Joystick::Move::NOT) {
     return "NOT";
   } else if (move == Joystick::Move::PRESS) {

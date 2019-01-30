@@ -13,7 +13,7 @@
 #include <AxisJoystick.h>
 #include <XYReplacer.h>
 
-#define SW_PIN  5
+#define SW_PIN 5
 #define VRX_PIN A1
 #define VRY_PIN A2
 
@@ -29,14 +29,14 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  Serial.print("original: " + getMoveTitle(original->multipleRead()));
-  Serial.println(" | replace XY: " + getMoveTitle(xyReplacer->multipleRead()));
+  Serial.print("original: " + moveTitle(original->multipleRead()));
+  Serial.println(" | replace XY: " + moveTitle(xyReplacer->multipleRead()));
 }
 
 /**
   Return title of the input joystick move.
 */
-String getMoveTitle(const Joystick::Move move) {
+String moveTitle(const Joystick::Move move) {
   if (move == Joystick::Move::NOT) {
     return "NOT";
   } else if (move == Joystick::Move::PRESS) {

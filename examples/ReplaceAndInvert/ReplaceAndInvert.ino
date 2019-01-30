@@ -15,7 +15,7 @@
 #include <XInverter.h>
 #include <YInverter.h>
 
-#define SW_PIN  5
+#define SW_PIN 5
 #define VRX_PIN A1
 #define VRY_PIN A2
 
@@ -28,23 +28,21 @@ void setup() {
   original = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
   modified = new XYReplacer(
     new XInverter(
-      new YInverter(
-        original
-      )
+      new YInverter(original)
     )
   );
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  Serial.print("original: " + getMoveTitle(original->multipleRead()));
-  Serial.println(" | modified: " + getMoveTitle(modified->multipleRead()));
+  Serial.print("original: " + moveTitle(original->multipleRead()));
+  Serial.println(" | modified: " + moveTitle(modified->multipleRead()));
 }
 
 /**
   Return title of the input joystick move.
 */
-String getMoveTitle(const Joystick::Move move) {
+String moveTitle(const Joystick::Move move) {
   if (move == Joystick::Move::NOT) {
     return "NOT";
   } else if (move == Joystick::Move::PRESS) {

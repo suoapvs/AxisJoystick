@@ -11,11 +11,11 @@
 */
 #include <AxisJoystick.h>
 
-#define SW_PIN  5
+#define SW_PIN 5
 #define VRX_PIN A1
 #define VRY_PIN A2
 
-AxisJoystick* joystic;
+Joystick* joystic;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
