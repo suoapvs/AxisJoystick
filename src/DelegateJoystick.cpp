@@ -4,10 +4,6 @@ DelegateJoystick::DelegateJoystick(Joystick* origin) {
 	this->origin = origin;
 }
 
-/**
-	Destructor.
-	On deleting deletes the original joystick.
-*/
 DelegateJoystick::~DelegateJoystick() {
 	delete this->origin;
 }
@@ -58,4 +54,14 @@ int DelegateJoystick::readVRy() {
 
 int DelegateJoystick::readSW() {
 	return this->origin->readSW();
+}
+
+void DelegateJoystick::calibrate(const int low, const int high) {
+	this->origin->calibrate(low, high);
+}
+
+void DelegateJoystick::calibrate(
+	const int low, const int high, const int divition
+) {
+	this->origin->calibrate(low, high, divition);
 }

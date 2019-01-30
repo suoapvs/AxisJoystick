@@ -5,37 +5,19 @@ AxisJoystick::AxisJoystick(
 	const int VRx_pin,
 	const int VRy_pin
 ) {
-	this->SW_pin = SW_pin;
-	this->VRx_pin = VRx_pin;
-	this->VRy_pin = VRy_pin;
-	init();
-}
-
-inline void AxisJoystick::init() {
-	pinMode(this->SW_pin, INPUT_PULLUP);
-	pinMode(this->VRx_pin, INPUT);
-	pinMode(this->VRy_pin, INPUT);
+	pinMode(this->SW_pin = SW_pin, INPUT_PULLUP);
+	pinMode(this->VRx_pin = VRx_pin, INPUT);
+	pinMode(this->VRy_pin = VRy_pin, INPUT);
 }
 
 Joystick::Move AxisJoystick::singleRead() {
 	const Move joystickMove = multipleRead();
 	if (joystickMove != this->previousMove) {
-		this->previousMove = joystickMove;
-		return joystickMove;
+		return this->previousMove = joystickMove;
 	}
 	return Move::NOT;
 }
 
-/**
-	Multiple reading of the joystick controller.
-	@return value of pressing the joystick:
-		Move::PRESS - button is pressed;
-		Move::UP - Y-axis is pressed up;
-		Move::DOWN - Y-axis is pressed down;
-		Move::RIGTH - X-axis is pressed right;
-		Move::LEFT - X-axis is pressed left;
-		Move::NOT - not pressed.
-*/
 Joystick::Move AxisJoystick::multipleRead() {
 	if (isPress()) {
 		return Move::PRESS;
@@ -56,19 +38,19 @@ boolean AxisJoystick::isPress() {
 }
 
 boolean AxisJoystick::isUp() {
-	return readVRy() >= JOYSTICK_AXIS_HIGH_RANGE;
+	return readVRy() >= highRange();
 }
 
 boolean AxisJoystick::isDown() {
-	return readVRy() <= JOYSTICK_AXIS_LOW_RANGE;
+	return readVRy() <= lowRange();
 }
 
 boolean AxisJoystick::isRight() {
-	return readVRx() >= JOYSTICK_AXIS_HIGH_RANGE;
+	return readVRx() >= highRange();
 }
 
 boolean AxisJoystick::isLeft() {
-	return readVRx() <= JOYSTICK_AXIS_LOW_RANGE;
+	return readVRx() <= lowRange();
 }
 
 int AxisJoystick::readVRx() {
@@ -89,4 +71,24 @@ int AxisJoystick::xAxis() {
 
 int AxisJoystick::yAxis() {
 	return readVRy();
+}
+
+void AxisJoystick::calibrate(const int low, const int high) {
+	this->low = low;
+	this->high = high;
+}
+
+void AxisJoystick::calibrate(
+	const int low, const int high, const int divition
+) {
+	calibrate(low, high);
+	this->divition = divition;
+}
+
+inline int AxisJoystick::lowRange() {
+	return (this->low + this->divition);
+}
+
+inline int AxisJoystick::highRange() {
+	return (this->high - this->divition);
 }

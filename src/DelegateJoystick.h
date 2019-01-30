@@ -8,6 +8,9 @@
 	v.2.0.1
 	- added destructor.
 
+	v.2.1.0
+	- added calibration methods for joystick axes.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, December, 2018.
@@ -18,17 +21,24 @@
 
 #include "Joystick.h"
 
-// abstract class
 class DelegateJoystick : public Joystick {
 
-	protected:
+	private:
 		Joystick* origin;
 
 	protected:
+		/**
+			Constructor.
+			@param origin - the origin joystick.
+		*/
 		DelegateJoystick(Joystick* origin);
 
 	public:
-		~DelegateJoystick() override;
+		/**
+			Destructor.
+			On deleting deletes the original joystick.
+		*/
+		~DelegateJoystick();
 
 		virtual Move singleRead() override;
 
@@ -53,6 +63,10 @@ class DelegateJoystick : public Joystick {
 		int readVRy() override;
 
 		int readSW() override;
+
+		void calibrate(int low, int high) override;
+
+		void calibrate(int low, int high, int divition) override;
 };
 
 #endif

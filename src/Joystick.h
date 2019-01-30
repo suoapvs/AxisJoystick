@@ -2,6 +2,9 @@
 	Joystick.h - interface describes a set of methods
 	for working with a joystick controller.
 
+	v.2.1.0
+	- added calibration methods for joystick axes.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, December, 2018.
@@ -16,7 +19,6 @@
 	#include <WProgram.h>
 #endif
 
-// interface
 class Joystick {
 
 	public:
@@ -34,87 +36,107 @@ class Joystick {
 			PRESS, UP, DOWN, RIGHT, LEFT, NOT
 		};
 
-	protected:
-		Joystick() {}
-
 	public:
-		virtual ~Joystick() {}
-
 		/**
 			Single reading of the joystick controller.
 			If the joystick is clamped, the next
 			value of pressing - NOT.
 			@return value of pressing the joystick.
 		*/
-		virtual Move singleRead() {}
+		virtual Move singleRead() = 0;
 
 		/**
 			Multiple reading of the joystick controller.
 			If the joystick is clamped,
 			returns a pressed button value.
-			@return value of pressing the joystick.
+			@return value of pressing the joystick:
+				Move::PRESS - button is pressed;
+				Move::UP - Y-axis is pressed up;
+				Move::DOWN - Y-axis is pressed down;
+				Move::RIGTH - X-axis is pressed right;
+				Move::LEFT - X-axis is pressed left;
+				Move::NOT - not pressed.
 		*/
-		virtual Move multipleRead() {}
+		virtual Move multipleRead() = 0;
 
 		/**
 			Checks if the joystick button is pressed.
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
-		virtual boolean isPress() {}
+		virtual boolean isPress() = 0;
 
 		/**
 			Checks if the joystick is pressed up (Y-axis).
 			@return true - joystick is pressed up,
 			false - joystick is not pressed.
 		*/
-		virtual boolean isUp() {}
+		virtual boolean isUp() = 0;
 
 		/**
 			Checks if the joystick is pressed down (Y-axis).
 			@return true - joystick is pressed down,
 			false - joystick is not pressed.
 		*/
-		virtual boolean isDown() {}
+		virtual boolean isDown() = 0;
 
 		/**
 			Checks if the joystick is pressed right (X-axis).
 			@return true - joystick is pressed right,
 			false - joystick is not pressed.
 		*/
-		virtual boolean isRight() {}
+		virtual boolean isRight() = 0;
 
 		/**
 			Checks if the joystick is pressed left (X-axis).
 			@return true - joystick is pressed left,
 			false - joystick is not pressed.
 		*/
-		virtual boolean isLeft() {}
+		virtual boolean isLeft() = 0;
 
 		/**
 			Returns the joystick X-axis coordinate.
 		*/
-		virtual int xAxis() {}
+		virtual int xAxis() = 0;
 
 		/**
 			Returns the joystick Y-axis coordinate.
 		*/
-		virtual int yAxis() {}
+		virtual int yAxis() = 0;
 
 		/**
 			Returns VRx pin value.
 		*/
-		virtual int readVRx() {}
+		virtual int readVRx() = 0;
 
 		/**
 			Returns VRy pin value.
 		*/
-		virtual int readVRy() {}
+		virtual int readVRy() = 0;
 
 		/**
 			Returns SW pin value.
 		*/
-		virtual int readSW() {}
+		virtual int readSW() = 0;
+
+		/**
+			Joystick axes calibration.
+			@param low - the lower bound of the value’s axis range;
+			@param high - the upper bound of the value’s axis range;
+		*/
+		virtual void calibrate(int low, int high) = 0;
+
+		/**
+			Joystick axes calibration.
+			@param low - the lower bound of the value’s axis range;
+			@param high - the upper bound of the value’s axis range;
+			@param divition - Deviation from the value’s axis range,
+				when the axis is considered activated:
+				axis value <= (low + divition)
+				or
+				axis value >= (high - divition).
+		*/
+		virtual void calibrate(int low, int high, int divition) = 0;
 };
 
 #endif

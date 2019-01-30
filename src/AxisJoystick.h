@@ -9,6 +9,9 @@
 	- added implementation of the Joystick interface;
 	- replaced X and Y axes.
 
+	v.2.1.0
+	- added calibration methods for joystick axes.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, February, 2018.
@@ -21,62 +24,39 @@
 
 /**
 	The value at which the joystick axis
-	is considered to be on (15%).
+	is considered to be on.
 */
-#define JOYSTICK_AXIS_ON_PERCENT	0.15
+#define JOYSTICK_AXIS_DIVITION 100
 
 /**
 	Min value of Arduino ADC.
 */
-#define JOYSTICK_ADC_MIN	0
+#define JOYSTICK_ADC_MIN 0
 
 /**
 	Max value of Arduino ADC.
 */
-#define JOYSTICK_ADC_MAX	1023
-
-/**
-	Values diapason of Arduino ADC
-*/
-#define JOYSTICK_ADC	(JOYSTICK_ADC_MAX - JOYSTICK_ADC_MIN)
-
-/**
-	The value at which the joystick axis
-	is considered to be on.
-*/
-#define JOYSTICK_AXIS_ON_RANGE	(JOYSTICK_ADC * JOYSTICK_AXIS_ON_PERCENT)
-
-/**
-	The upper limit of the range of values
-	at which the joystick axis is considered
-	to be pressed UP.
-*/
-#define JOYSTICK_AXIS_HIGH_RANGE	(JOYSTICK_ADC_MAX - JOYSTICK_AXIS_ON_RANGE)
-
-/**
-	The lower limit of the range of values
-	at which the joystick axis is considered
-	to be pressed DOWN.
-*/
-#define JOYSTICK_AXIS_LOW_RANGE	(JOYSTICK_ADC_MIN + JOYSTICK_AXIS_ON_RANGE)
+#define JOYSTICK_ADC_MAX 1023
 
 /**
 	Signal when the joystick button is pressed.
 */
-#define JOYSTICK_BUTTON_PRESS_SIGNAL	LOW
+#define JOYSTICK_BUTTON_PRESS_SIGNAL LOW
 
-// class
 class AxisJoystick final : public Joystick {
 
 	private:
 		int SW_pin;
 		int VRx_pin;
 		int VRy_pin;
+		int low = JOYSTICK_ADC_MIN;
+		int high = JOYSTICK_ADC_MAX;
+		int divition = JOYSTICK_AXIS_DIVITION;
 
 		/**
-			The value for the temporary storage
-			of the previous pressing of the joystick
-			controller.
+		The value for the temporary storage
+		of the previous pressing of the joystick
+		controller.
 		*/
 		Move previousMove = Move::NOT;
 
@@ -113,11 +93,14 @@ class AxisJoystick final : public Joystick {
 
 		int yAxis() override;
 
+		void calibrate(int low, int high) override;
+
+		void calibrate(int low, int high, int divition) override;
+
 	private:
-		/**
-			Initialization of the module.
-		*/
-		inline void init();
+		inline int lowRange();
+
+		inline int highRange();
 };
 
 #endif
