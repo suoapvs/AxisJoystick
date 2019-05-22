@@ -37,25 +37,27 @@ void setup() {
 void loop() {
   Serial.print("original: " + moveTitle(original->multipleRead()));
   Serial.println(" | modified: " + moveTitle(modified->multipleRead()));
+  delay(500); // To delay the output of information.
 }
 
 /**
   Return title of the input joystick move.
 */
 String moveTitle(const Joystick::Move move) {
-  if (move == Joystick::Move::NOT) {
-    return "NOT";
-  } else if (move == Joystick::Move::PRESS) {
-    return "PRESS";
-  } else if (move == Joystick::Move::UP) {
-    return "UP";
-  } else if (move == Joystick::Move::DOWN) {
-    return "DOWN";
-  } else if (move == Joystick::Move::RIGHT) {
-    return "RIGHT";
-  } else if (move == Joystick::Move::LEFT) {
-    return "LEFT";
-  } else {
-    return "???";
+  switch (move) {
+    case Joystick::Move::NOT:
+      return "NOT";
+    case Joystick::Move::PRESS:
+      return "PRESS";
+    case Joystick::Move::UP:
+      return "UP";
+    case Joystick::Move::DOWN:
+      return "DOWN";
+    case Joystick::Move::RIGHT:
+      return "RIGHT";
+    case Joystick::Move::LEFT:
+      return "LEFT";
+    default:
+      return "???";
   }
 }
