@@ -1,18 +1,18 @@
-#include "XInverter.h"
+#include "XInverterJoystick.h"
 
-XInverter::XInverter(Joystick* origin)
+XInverterJoystick::XInverterJoystick(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 
-Joystick::Move XInverter::singleRead() {
+Joystick::Move XInverterJoystick::singleRead() {
 	return invert(DelegateJoystick::singleRead());
 }
 
-Joystick::Move XInverter::multipleRead() {
+Joystick::Move XInverterJoystick::multipleRead() {
 	return invert(DelegateJoystick::multipleRead());
 }
 
-Joystick::Move XInverter::invert(const Joystick::Move move) {
+Joystick::Move XInverterJoystick::invert(const Joystick::Move move) {
 	switch (move) {
 		case Move::LEFT:
 			return Move::RIGHT;
@@ -23,10 +23,10 @@ Joystick::Move XInverter::invert(const Joystick::Move move) {
 	}
 }
 
-boolean XInverter::isRight() {
+boolean XInverterJoystick::isRight() {
 	return DelegateJoystick::isLeft();
 }
 
-boolean XInverter::isLeft() {
+boolean XInverterJoystick::isLeft() {
 	return DelegateJoystick::isRight();
 }

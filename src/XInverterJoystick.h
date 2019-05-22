@@ -8,24 +8,27 @@
 	v.2.1.1
 	- optimized invert() method.
 
+	v.2.2.0
+	- renamed from XInverter.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, December, 2018.
 	Released into the public domain.
 */
-#ifndef X_INVERTER_H
-#define X_INVERTER_H
+#ifndef X_INVERTER_JOYSTICK_H
+#define X_INVERTER_JOYSTICK_H
 
 #include "DelegateJoystick.h"
 
-class XInverter final : public DelegateJoystick {
+class XInverterJoystick final : public DelegateJoystick {
 
 	public:
 		/**
 			Constructor.
 			@param origin - the origin joystick.
 		*/
-		XInverter(Joystick* origin);
+		XInverterJoystick(Joystick* origin);
 
 		/**
 			Single reading of the joystick controller.
