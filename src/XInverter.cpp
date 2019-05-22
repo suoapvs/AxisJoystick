@@ -13,12 +13,14 @@ Joystick::Move XInverter::multipleRead() {
 }
 
 Joystick::Move XInverter::invert(const Joystick::Move move) {
-	if (move == Move::LEFT) {
-		return Move::RIGHT;
-	} else if (move == Move::RIGHT) {
-		return Move::LEFT;
+	switch (move) {
+		case Move::LEFT:
+			return Move::RIGHT;
+		case Move::RIGHT:
+			return Move::LEFT;
+		default:
+			return move;
 	}
-	return move;
 }
 
 boolean XInverter::isRight() {
