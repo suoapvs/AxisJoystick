@@ -8,24 +8,27 @@
 	v.2.1.1
 	- optimized replace() method.
 
+	v.2.2.0
+	- renamed from XYReplacer.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, December, 2018.
 	Released into the public domain.
 */
-#ifndef XY_REPLACER_H
-#define XY_REPLACER_H
+#ifndef XY_REPLACER_JOYSTICK_H
+#define XY_REPLACER_JOYSTICK_H
 
 #include "DelegateJoystick.h"
 
-class XYReplacer final : public DelegateJoystick {
+class XYReplacerJoystick final : public DelegateJoystick {
 
 	public:
 		/**
 			Constructor.
 			@param origin - the origin joystick.
 		*/
-		XYReplacer(Joystick* origin);
+		XYReplacerJoystick(Joystick* origin);
 
 		/**
 			Single reading of the joystick controller.

@@ -1,18 +1,18 @@
-#include "XYReplacer.h"
+#include "XYReplacerJoystick.h"
 
-XYReplacer::XYReplacer(Joystick* origin)
+XYReplacerJoystick::XYReplacerJoystick(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 
-Joystick::Move XYReplacer::singleRead() {
+Joystick::Move XYReplacerJoystick::singleRead() {
 	return replace(DelegateJoystick::singleRead());
 }
 
-Joystick::Move XYReplacer::multipleRead() {
+Joystick::Move XYReplacerJoystick::multipleRead() {
 	return replace(DelegateJoystick::multipleRead());
 }
 
-Joystick::Move XYReplacer::replace(const Joystick::Move move) {
+Joystick::Move XYReplacerJoystick::replace(const Joystick::Move move) {
 	switch (move) {
 		case Move::UP:
 			return Move::RIGHT;
@@ -27,26 +27,26 @@ Joystick::Move XYReplacer::replace(const Joystick::Move move) {
 	}
 }
 
-boolean XYReplacer::isUp() {
+boolean XYReplacerJoystick::isUp() {
 	return DelegateJoystick::isRight();
 }
 
-boolean XYReplacer::isDown() {
+boolean XYReplacerJoystick::isDown() {
 	return DelegateJoystick::isLeft();
 }
 
-boolean XYReplacer::isRight() {
+boolean XYReplacerJoystick::isRight() {
 	return DelegateJoystick::isUp();
 }
 
-boolean XYReplacer::isLeft() {
+boolean XYReplacerJoystick::isLeft() {
 	return DelegateJoystick::isDown();
 }
 
-int XYReplacer::xAxis() {
+int XYReplacerJoystick::xAxis() {
 	return DelegateJoystick::yAxis();
 }
 
-int XYReplacer::yAxis() {
+int XYReplacerJoystick::yAxis() {
 	return DelegateJoystick::xAxis();
 }
