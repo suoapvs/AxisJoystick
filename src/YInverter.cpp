@@ -13,12 +13,14 @@ Joystick::Move YInverter::multipleRead() {
 }
 
 Joystick::Move YInverter::invert(const Joystick::Move move) {
-	if (move == Move::UP) {
-		return Move::DOWN;
-	} else if (move == Move::DOWN) {
-		return Move::UP;
+	switch (move) {
+		case Move::UP:
+			return Move::DOWN;
+		case Move::DOWN:
+			return Move::UP;
+		default:
+			return move;
 	}
-	return move;
 }
 
 boolean YInverter::isUp() {
