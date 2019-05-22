@@ -11,7 +11,7 @@
 */
 #include <Joystick.h>
 #include <AxisJoystick.h>
-#include <XYReplacer.h>
+#include <XYReplacerJoystick.h>
 
 #define SW_PIN 5
 #define VRX_PIN A1
@@ -24,7 +24,7 @@ Joystick* xyReplacer;
 void setup() {
   Serial.begin(9600);
   original = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
-  xyReplacer = new XYReplacer(original);
+  xyReplacer = new XYReplacerJoystick(original);
 }
 
 // the loop function runs over and over again forever

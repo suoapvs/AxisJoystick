@@ -11,9 +11,9 @@
 */
 #include <Joystick.h>
 #include <AxisJoystick.h>
-#include <XYReplacer.h>
-#include <XInverter.h>
-#include <YInverter.h>
+#include <XYReplacerJoystick.h>
+#include <XInverterJoystick.h>
+#include <YInverterJoystick.h>
 
 #define SW_PIN 5
 #define VRX_PIN A1
@@ -26,9 +26,9 @@ Joystick* modified;
 void setup() {
   Serial.begin(9600);
   original = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
-  modified = new XYReplacer(
-    new XInverter(
-      new YInverter(original)
+  modified = new XYReplacerJoystick(
+    new XInverterJoystick(
+      new YInverterJoystick(original)
     )
   );
 }

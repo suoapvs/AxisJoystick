@@ -11,8 +11,8 @@
 */
 #include <Joystick.h>
 #include <AxisJoystick.h>
-#include <XInverter.h>
-#include <YInverter.h>
+#include <XInverterJoystick.h>
+#include <YInverterJoystick.h>
 
 #define SW_PIN 5
 #define VRX_PIN A1
@@ -26,8 +26,8 @@ Joystick* yInverter;
 void setup() {
   Serial.begin(9600);
   original = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
-  xInverter = new XInverter(original);
-  yInverter = new YInverter(original);
+  xInverter = new XInverterJoystick(original);
+  yInverter = new YInverterJoystick(original);
 }
 
 // the loop function runs over and over again forever
