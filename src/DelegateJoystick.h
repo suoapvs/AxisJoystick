@@ -66,7 +66,7 @@ class DelegateJoystick : public Joystick {
 
 		void calibrate(int low, int high) override;
 
-		void calibrate(int low, int high, int divition) override;
+		void calibrate(int low, int high, int deviation) override;
 };
 
 #endif

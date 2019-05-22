@@ -61,7 +61,7 @@ void DelegateJoystick::calibrate(const int low, const int high) {
 }
 
 void DelegateJoystick::calibrate(
-	const int low, const int high, const int divition
+	const int low, const int high, const int deviation
 ) {
-	this->origin->calibrate(low, high, divition);
+	this->origin->calibrate(low, high, deviation);
 }
