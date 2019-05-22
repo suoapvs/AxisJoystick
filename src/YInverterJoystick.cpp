@@ -1,18 +1,18 @@
-#include "YInverter.h"
+#include "YInverterJoystick.h"
 
-YInverter::YInverter(Joystick* origin)
+YInverterJoystick::YInverterJoystick(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 
-Joystick::Move YInverter::singleRead() {
+Joystick::Move YInverterJoystick::singleRead() {
 	return invert(DelegateJoystick::singleRead());
 }
 
-Joystick::Move YInverter::multipleRead() {
+Joystick::Move YInverterJoystick::multipleRead() {
 	return invert(DelegateJoystick::multipleRead());
 }
 
-Joystick::Move YInverter::invert(const Joystick::Move move) {
+Joystick::Move YInverterJoystick::invert(const Joystick::Move move) {
 	switch (move) {
 		case Move::UP:
 			return Move::DOWN;
@@ -23,10 +23,10 @@ Joystick::Move YInverter::invert(const Joystick::Move move) {
 	}
 }
 
-boolean YInverter::isUp() {
+boolean YInverterJoystick::isUp() {
 	return DelegateJoystick::isDown();
 }
 
-boolean YInverter::isDown() {
+boolean YInverterJoystick::isDown() {
 	return DelegateJoystick::isUp();
 }

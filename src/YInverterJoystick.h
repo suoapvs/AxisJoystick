@@ -8,24 +8,27 @@
 	v.2.1.1
 	- optimized replace() method.
 
+	v.2.2.0
+	- renamed from YInverter.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, December, 2018.
 	Released into the public domain.
 */
-#ifndef Y_INVERTER_H
-#define Y_INVERTER_H
+#ifndef Y_INVERTER_JOYSTICK_H
+#define Y_INVERTER_JOYSTICK_H
 
 #include "DelegateJoystick.h"
 
-class YInverter final : public DelegateJoystick {
+class YInverterJoystick final : public DelegateJoystick {
 
 	public:
 		/**
 			Constructor.
 			@param origin - the origin joystick.
 		*/
-		YInverter(Joystick* origin);
+		YInverterJoystick(Joystick* origin);
 
 		/**
 			Single reading of the joystick controller.
