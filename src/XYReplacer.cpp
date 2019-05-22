@@ -13,16 +13,18 @@ Joystick::Move XYReplacer::multipleRead() {
 }
 
 Joystick::Move XYReplacer::replace(const Joystick::Move move) {
-	if (move == Move::UP) {
-		return Move::RIGHT;
-	} else if (move == Move::DOWN) {
-		return Move::LEFT;
-	} else if (move == Move::RIGHT) {
-		return Move::UP;
-	} else if (move == Move::LEFT) {
-		return Move::DOWN;
+	switch (move) {
+		case Move::UP:
+			return Move::RIGHT;
+		case Move::DOWN:
+			return Move::LEFT;
+		case Move::RIGHT:
+			return Move::UP;
+		case Move::LEFT:
+			return Move::DOWN;
+		default:
+			return move;
 	}
-	return move;
 }
 
 boolean XYReplacer::isUp() {
