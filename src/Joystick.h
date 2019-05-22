@@ -121,22 +121,22 @@ class Joystick {
 
 		/**
 			Joystick axes calibration.
-			@param low - the lower bound of the value’s axis range;
-			@param high - the upper bound of the value’s axis range;
+			@param low - the lower bound of the values range;
+			@param high - the upper bound of the values range;
 		*/
 		virtual void calibrate(int low, int high) = 0;
 
 		/**
 			Joystick axes calibration.
-			@param low - the lower bound of the value’s axis range;
-			@param high - the upper bound of the value’s axis range;
-			@param divition - Deviation from the value’s axis range,
+			@param low - the lower bound of the values range;
+			@param high - the upper bound of the values range;
+			@param deviation - deviation from the value’s axis range,
 				when the axis is considered activated:
-				axis value <= (low + divition)
+				axis value <= (low + deviation)
 				or
-				axis value >= (high - divition).
+				axis value >= (high - deviation).
 		*/
-		virtual void calibrate(int low, int high, int divition) = 0;
+		virtual void calibrate(int low, int high, int deviation) = 0;
 };
 
 #endif
