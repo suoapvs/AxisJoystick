@@ -11,11 +11,10 @@ AxisJoystick::AxisJoystick(
 }
 
 Joystick::Move AxisJoystick::singleRead() {
-	const Move joystickMove = multipleRead();
-	if (joystickMove != this->previousMove) {
-		return this->previousMove = joystickMove;
-	}
-	return Move::NOT;
+	const Move currentMove = multipleRead();
+	return (currentMove != this->previousMove) ?
+		(this->previousMove = currentMove) :
+		Move::NOT;
 }
 
 Joystick::Move AxisJoystick::multipleRead() {
@@ -79,16 +78,16 @@ void AxisJoystick::calibrate(const int low, const int high) {
 }
 
 void AxisJoystick::calibrate(
-	const int low, const int high, const int divition
+	const int low, const int high, const int deviation
 ) {
 	calibrate(low, high);
-	this->divition = divition;
+	this->deviation = deviation;
 }
 
 inline int AxisJoystick::lowRange() {
-	return (this->low + this->divition);
+	return (this->low + this->deviation);
 }
 
 inline int AxisJoystick::highRange() {
-	return (this->high - this->divition);
+	return (this->high - this->deviation);
 }

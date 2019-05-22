@@ -12,6 +12,9 @@
 	v.2.1.0
 	- added calibration methods for joystick axes.
 
+	v.2.1.1
+	- optimized singleRead() method.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, February, 2018.
@@ -26,7 +29,7 @@
 	The value at which the joystick axis
 	is considered to be on.
 */
-#define JOYSTICK_AXIS_DIVITION 100
+#define JOYSTICK_AXIS_DEVIATION 100
 
 /**
 	Min value of Arduino ADC.
@@ -51,7 +54,7 @@ class AxisJoystick final : public Joystick {
 		int VRy_pin;
 		int low = JOYSTICK_ADC_MIN;
 		int high = JOYSTICK_ADC_MAX;
-		int divition = JOYSTICK_AXIS_DIVITION;
+		int deviation = JOYSTICK_AXIS_DEVIATION;
 
 		/**
 		The value for the temporary storage
@@ -93,9 +96,24 @@ class AxisJoystick final : public Joystick {
 
 		int yAxis() override;
 
+		/**
+			Joystick axes calibration.
+			@param low - the lower bound of the values range (default, 0);
+			@param high - the upper bound of the values range (default, 1023);
+		*/
 		void calibrate(int low, int high) override;
 
-		void calibrate(int low, int high, int divition) override;
+		/**
+			Joystick axes calibration.
+			@param low - the lower bound of the values range (default, 0);
+			@param high - the upper bound of the values range (default, 1023);
+			@param deviation - deviation from the value’s axis range (default, 100),
+				when the axis is considered activated:
+				axis value <= (low + deviation)
+				or
+				axis value >= (high - deviation).
+		*/
+		void calibrate(int low, int high, int deviation) override;
 
 	private:
 		inline int lowRange();
