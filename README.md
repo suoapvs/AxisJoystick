@@ -1,20 +1,25 @@
 # Axis Joystick Library
 
-For Arduino boards.
+For Arduino ant STM32 boards.
 
-The Library implements a set of methods for working with an axis joystick controller.
+The Library implements a set of methods for working with an axis
+joystick controller.
 Dual axis XY joystick module reading.
 
 The Analog Joystick is similar to two potentiometers connected together,
-one for the vertical movement (Y-axis) and other for the horizontal movement (X-axis).
-The joystick also comes with a button.
+one for the vertical movement (Y-axis) and other for the horizontal
+movement (X-axis). The joystick also comes with a button.
 
-The Arduino Uno or any other Arduino board that uses Atmega328 as the Microcontroller
-has ADC resolution of 10 bits. Hence the values on each analog channel can vary from 0 to 1023.
+The Arduino Uno or any other Arduino board that uses Atmega328 as
+the Microcontroller has ADC resolution of 10 bits. Hence the values on each
+analog channel can vary from 0 to 1023.
+The STM32 board has ADC resolution of 12 bits. Hence the values on each analog
+channel can vary from 0 to 4095.
 
-The home position for the stick is at (x,y:511,511). If the stick is moved on X axis
-from one end to the other, the X values will change from 0 to 1023 and similar thing
-happens when moved along the Y axis. On the same lines you can read position of the
+The home position for the stick is at (x,y:511,511, for Arduino).
+If the stick is moved on X axis from one end to the other, the X values will
+change from 0 to 1023 and similar thing happens when moved along the Y axis.
+On the same lines you can read position of the
 stick anywhere in upper half hemisphere from combination of these values.
 
 ## Installation
@@ -116,32 +121,46 @@ joystick.isRight();
 */
 joystick.isLeft();
 
-// Returns the joystick X axis coordinate  (VRx).
+// Returns the joystick X axis coordinate (VRx).
 joystick.xAxis();
 
-// Returns the joystick Y axis coordinate  (VRy).
+// Returns the joystick Y axis coordinate (VRy).
 joystick.yAxis();
 
 /**
     Joystick axes calibration.
-    LOW - the lower bound of the value’s axis range;
-    HIGH - the upper bound of the value’s axis range;
+    LOW - the lower bound of the values range (default, 0);
+    HIGH - the upper bound of the values range (default, 1023);
 */
 joystick.calibrate(LOW, HIGH);
 
 /**
     Joystick axes calibration.
-    LOW - the lower bound of the value’s axis range;
-    HIGH - the upper bound of the value’s axis range;
-    DIVITION - Deviation from the value’s axis range,
+    LOW - the lower bound of the values range (default, 0);
+    HIGH - the upper bound of the values range (default, 1023);
+    DEVIATION - deviation from the value’s axis range (default, 100),
         when the axis is considered activated:
-        axis value <= (LOW + DIVITION)
+        axis value <= (LOW + DEVIATION)
         or
-        axis value >= (HIGH - DIVITION).
+        axis value >= (HIGH - DEVIATION).
 */
-joystick.calibrate(LOW, HIGH, DIVITION);
+joystick.calibrate(LOW, HIGH, DEVIATION);
 ```
 
-See [examples](/examples)...
+### Examples
+
+[Single reading...](/examples/SingleReading/SingleReading.ino)
+
+[Multiple reading...](/examples/MultipleReading/MultipleReading.ino)
+
+[How to calibrate axes...](/examples/CalibrateJoystick/CalibrateJoystick.ino)
+
+[How to invert axis...](/examples/InvertAxis/InvertAxis.ino)
+
+[How to replace axes...](/examples/ReplaceXY/ReplaceXY.ino)
+
+[STM32...](/examples/STM32/STM32.ino)
+
+[All examples](/examples)...
 
 Created by Yurii Salimov.
