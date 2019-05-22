@@ -25,8 +25,8 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  Serial.print("| SingleRead: " + String(joystic->singleRead()));
-  Serial.print(" | MultipleRead: " + String(joystic->multipleRead()));
+  Serial.print("| SingleRead: " + moveTitle(joystic->singleRead()));
+  Serial.print(" | MultipleRead: " + moveTitle(joystic->multipleRead()));
   Serial.print(" | Press: " + String(joystic->isPress()));
   Serial.print(" | Up: " + String(joystic->isUp()));
   Serial.print(" | Down: " + String(joystic->isDown()));
@@ -35,4 +35,27 @@ void loop() {
   Serial.print(" | VRx: " + String(joystic->readVRx()));
   Serial.print(" | VRy: " + String(joystic->readVRy()));
   Serial.println(" | SW: " + String(joystic->readSW()) + " |");
+  delay(500); // To delay the output of information.
+}
+
+/**
+  Return title of the input joystick move.
+*/
+String moveTitle(const Joystick::Move move) {
+  switch (move) {
+    case Joystick::Move::NOT:
+      return "NOT";
+    case Joystick::Move::PRESS:
+      return "PRESS";
+    case Joystick::Move::UP:
+      return "UP";
+    case Joystick::Move::DOWN:
+      return "DOWN";
+    case Joystick::Move::RIGHT:
+      return "RIGHT";
+    case Joystick::Move::LEFT:
+      return "LEFT";
+    default:
+      return "???";
+  }
 }
