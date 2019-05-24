@@ -57,9 +57,9 @@ class AxisJoystick final : public Joystick {
 		int deviation = JOYSTICK_AXIS_DEVIATION;
 
 		/**
-		The value for the temporary storage
-		of the previous pressing of the joystick
-		controller.
+			The value for the temporary storage
+			of the previous pressing of the joystick
+			controller.
 		*/
 		Move previousMove = Move::NOT;
 
