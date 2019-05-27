@@ -15,6 +15,9 @@
 	v.2.1.1
 	- optimized singleRead() method.
 
+	v.2.2.1
+	- optimized methods for Joystick calibration.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, February, 2018.
@@ -52,9 +55,8 @@ class AxisJoystick final : public Joystick {
 		int SW_pin;
 		int VRx_pin;
 		int VRy_pin;
-		int low = JOYSTICK_ADC_MIN;
-		int high = JOYSTICK_ADC_MAX;
-		int deviation = JOYSTICK_AXIS_DEVIATION;
+		int min = JOYSTICK_ADC_MIN + JOYSTICK_AXIS_DEVIATION;
+		int max = JOYSTICK_ADC_MAX - JOYSTICK_AXIS_DEVIATION;
 
 		/**
 			The value for the temporary storage
@@ -65,60 +67,138 @@ class AxisJoystick final : public Joystick {
 
 	public:
 		/**
-			Constructor.
+			Constructor
+
 			@param SW_pin - a digital port pin of a button.
 			@param VRx_pin - a analog port pin of X-axis.
 			@param VRy_pin - a analog port pin of Y-axis.
 		*/
 		AxisJoystick(int SW_pin, int VRx_pin, int VRy_pin);
 
+		/**
+			Single reading of the joystick controller.
+			If the joystick is clamped, the next
+			value of pressing - NOT.
+
+			@return value of pressing the joystick.
+		*/
 		Move singleRead() override;
 
+		/**
+			Multiple reading of the joystick controller.
+			If the joystick is clamped,
+			returns a pressed button value.
+
+			@return value of pressing the joystick:
+				Move::PRESS - button is pressed;
+				Move::UP - Y-axis is pressed up;
+				Move::DOWN - Y-axis is pressed down;
+				Move::RIGTH - X-axis is pressed right;
+				Move::LEFT - X-axis is pressed left;
+				Move::NOT - not pressed.
+		*/
 		Move multipleRead() override;
 
+		/**
+			Checks if the joystick button is pressed.
+
+			@return true - button is pressed,
+			false - button is not pressed.
+		*/
 		boolean isPress() override;
 
+		/**
+			Checks if the joystick is pressed up (Y-axis).
+
+			@return true - joystick is pressed up,
+			false - joystick is not pressed.
+		*/
 		boolean isUp() override;
 
+		/**
+			Checks if the joystick is pressed down (Y-axis).
+
+			@return true - joystick is pressed down,
+			false - joystick is not pressed.
+		*/
 		boolean isDown() override;
 
+		/**
+			Checks if the joystick is pressed right (X-axis).
+
+			@return true - joystick is pressed right,
+			false - joystick is not pressed.
+		*/
 		boolean isRight() override;
 
+		/**
+			Checks if the joystick is pressed left (X-axis).
+
+			@return true - joystick is pressed left,
+			false - joystick is not pressed.
+		*/
 		boolean isLeft() override;
 
-		int readVRx() override;
+		/**
+			Reads the joystick X-axis coordinate.
 
-		int readVRy() override;
-
-		int readSW() override;
-
+			@return X-axis coordinate.
+		*/
 		int xAxis() override;
 
+		/**
+			Reads the joystick Y-axis coordinate.
+
+			@return Y-axis coordinate.
+		*/
 		int yAxis() override;
 
 		/**
+			Reads the VRx pin value.
+
+			@return VRx value.
+		*/
+		int readVRx() override;
+
+		/**
+			Reads the VRy pin value.
+
+			@return VRy value.
+		*/
+		int readVRy() override;
+
+		/**
+			Reads the SW pin value.
+
+			@return SW value.
+		*/
+		int readSW() override;
+
+		/**
 			Joystick axes calibration.
-			@param low - the lower bound of the values range (default, 0);
-			@param high - the upper bound of the values range (default, 1023);
+
+			@param low - the lower bound of the values range (default, 100);
+			@param high - the upper bound of the values range (default, 923);
 		*/
 		void calibrate(int low, int high) override;
 
 		/**
 			Joystick axes calibration.
-			@param low - the lower bound of the values range (default, 0);
-			@param high - the upper bound of the values range (default, 1023);
+
+			@param adcMin - min value of the board ADC (default for Arduino, 0);
+			@param adcMax - max value of the board ADC (default for Arduino, 1023);
 			@param deviation - deviation from the value’s axis range (default, 100),
 				when the axis is considered activated:
 				axis value <= (low + deviation)
 				or
 				axis value >= (high - deviation).
 		*/
-		void calibrate(int low, int high, int deviation) override;
+		void calibrate(int adcMin, int adcMax, int deviation) override;
 
 	private:
-		inline int lowRange();
+		inline boolean isLow(int value);
 
-		inline int highRange();
+		inline boolean isHigh(int value);
 };
 
 #endif

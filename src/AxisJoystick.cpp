@@ -37,19 +37,19 @@ boolean AxisJoystick::isPress() {
 }
 
 boolean AxisJoystick::isUp() {
-	return readVRy() >= highRange();
+	return isHigh(readVRy());
 }
 
 boolean AxisJoystick::isDown() {
-	return readVRy() <= lowRange();
+	return isLow(readVRy());
 }
 
 boolean AxisJoystick::isRight() {
-	return readVRx() >= highRange();
+	return isHigh(readVRx());
 }
 
 boolean AxisJoystick::isLeft() {
-	return readVRx() <= lowRange();
+	return isLow(readVRx());
 }
 
 int AxisJoystick::readVRx() {
@@ -73,21 +73,23 @@ int AxisJoystick::yAxis() {
 }
 
 void AxisJoystick::calibrate(const int low, const int high) {
-	this->low = low;
-	this->high = high;
+	this->min = low;
+	this->max = high;
 }
 
 void AxisJoystick::calibrate(
-	const int low, const int high, const int deviation
+	const int adcMin, const int adcMax, const int deviation
 ) {
-	calibrate(low, high);
-	this->deviation = deviation;
+	calibrate(
+		adcMin + deviation,
+		adcMax - deviation
+	);
 }
 
-inline int AxisJoystick::lowRange() {
-	return (this->low + this->deviation);
+inline boolean AxisJoystick::isLow(const int value) {
+	return (value <= this->min);
 }
 
-inline int AxisJoystick::highRange() {
-	return (this->high - this->deviation);
+inline boolean AxisJoystick::isHigh(const int value) {
+	return (value >= this->max);
 }
