@@ -5,6 +5,9 @@
 	v.2.1.0
 	- added calibration methods for joystick axes.
 
+	v.2.2.1
+	- updated methods for Joystick calibration.
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, December, 2018.
@@ -41,6 +44,7 @@ class Joystick {
 			Single reading of the joystick controller.
 			If the joystick is clamped, the next
 			value of pressing - NOT.
+
 			@return value of pressing the joystick.
 		*/
 		virtual Move singleRead() = 0;
@@ -49,6 +53,7 @@ class Joystick {
 			Multiple reading of the joystick controller.
 			If the joystick is clamped,
 			returns a pressed button value.
+
 			@return value of pressing the joystick:
 				Move::PRESS - button is pressed;
 				Move::UP - Y-axis is pressed up;
@@ -61,6 +66,7 @@ class Joystick {
 
 		/**
 			Checks if the joystick button is pressed.
+
 			@return true - button is pressed,
 			false - button is not pressed.
 		*/
@@ -68,6 +74,7 @@ class Joystick {
 
 		/**
 			Checks if the joystick is pressed up (Y-axis).
+
 			@return true - joystick is pressed up,
 			false - joystick is not pressed.
 		*/
@@ -75,6 +82,7 @@ class Joystick {
 
 		/**
 			Checks if the joystick is pressed down (Y-axis).
+
 			@return true - joystick is pressed down,
 			false - joystick is not pressed.
 		*/
@@ -82,6 +90,7 @@ class Joystick {
 
 		/**
 			Checks if the joystick is pressed right (X-axis).
+
 			@return true - joystick is pressed right,
 			false - joystick is not pressed.
 		*/
@@ -89,38 +98,50 @@ class Joystick {
 
 		/**
 			Checks if the joystick is pressed left (X-axis).
+
 			@return true - joystick is pressed left,
 			false - joystick is not pressed.
 		*/
 		virtual boolean isLeft() = 0;
 
 		/**
-			Returns the joystick X-axis coordinate.
+			Reads the joystick X-axis coordinate.
+
+			@return X-axis coordinate.
 		*/
 		virtual int xAxis() = 0;
 
 		/**
-			Returns the joystick Y-axis coordinate.
+			Reads the joystick Y-axis coordinate.
+
+			@return Y-axis coordinate.
 		*/
 		virtual int yAxis() = 0;
 
 		/**
-			Returns VRx pin value.
+			Reads the VRx pin value.
+
+			@return VRx value.
 		*/
 		virtual int readVRx() = 0;
 
 		/**
-			Returns VRy pin value.
+			Reads the VRy pin value.
+
+			@return VRy value.
 		*/
 		virtual int readVRy() = 0;
 
 		/**
-			Returns SW pin value.
+			Reads the SW pin value.
+
+			@return SW value.
 		*/
 		virtual int readSW() = 0;
 
 		/**
 			Joystick axes calibration.
+
 			@param low - the lower bound of the values range;
 			@param high - the upper bound of the values range;
 		*/
@@ -128,15 +149,16 @@ class Joystick {
 
 		/**
 			Joystick axes calibration.
-			@param low - the lower bound of the values range;
-			@param high - the upper bound of the values range;
+
+			@param adcMin - min value of the board ADC;
+			@param adcMax - max value of the board ADC;
 			@param deviation - deviation from the value’s axis range,
 				when the axis is considered activated:
 				axis value <= (low + deviation)
 				or
 				axis value >= (high - deviation).
 		*/
-		virtual void calibrate(int low, int high, int deviation) = 0;
+		virtual void calibrate(int adcMin, int adcMax, int deviation) = 0;
 };
 
 #endif
