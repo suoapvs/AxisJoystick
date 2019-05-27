@@ -33,17 +33,28 @@ class XInverterJoystick final : public DelegateJoystick {
 		/**
 			Single reading of the joystick controller.
 			Inverts the input joystick X-axis move.
+
+			@return value of pressing the joystick:
+				Move::RIGHT - X-axis is pressed left;
+				Move::LEFT - X-axis is pressed right;
+				else the origin move.
 		*/
 		Move singleRead() override;
 
 		/**
 			Multiple reading of the joystick controller.
 			Inverts the input joystick X-axis move.
+
+			@return value of pressing the joystick:
+				Move::RIGHT - X-axis is pressed left;
+				Move::LEFT - X-axis is pressed right;
+				else the origin move.
 		*/
 		Move multipleRead() override;
 
 		/**
 			Checks if the joystick is pressed right (X-axis).
+
 			@return true - joystick is really pressed left,
 			false - joystick is not pressed.
 		*/
@@ -51,6 +62,7 @@ class XInverterJoystick final : public DelegateJoystick {
 
 		/**
 			Checks if the joystick is pressed left (X-axis).
+
 			@return true - joystick is really pressed right,
 			false - joystick is not pressed.
 		*/
@@ -59,6 +71,8 @@ class XInverterJoystick final : public DelegateJoystick {
 	private:
 		/**
 			Inverts the input joystick X-axis move.
+
+			@param move - the origin move to invert
 			@return value of pressing the joystick:
 				Move::RIGHT - X-axis is pressed left;
 				Move::LEFT - X-axis is pressed right;

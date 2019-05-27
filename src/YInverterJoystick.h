@@ -25,7 +25,8 @@ class YInverterJoystick final : public DelegateJoystick {
 
 	public:
 		/**
-			Constructor.
+			Constructor
+
 			@param origin - the origin joystick.
 		*/
 		YInverterJoystick(Joystick* origin);
@@ -33,17 +34,28 @@ class YInverterJoystick final : public DelegateJoystick {
 		/**
 			Single reading of the joystick controller.
 			Inverts the input joystick Y-axis move.
+
+			@return value of pressing the joystick:
+				Move::UP - Y-axis is pressed down;
+				Move::DOWN - Y-axis is pressed up;
+				else the input move.
 		*/
 		Move singleRead() override;
 
 		/**
 			Multiple reading of the joystick controller.
 			Inverts the input joystick Y-axis move.
+
+			@return value of pressing the joystick:
+				Move::UP - Y-axis is pressed down;
+				Move::DOWN - Y-axis is pressed up;
+				else the input move.
 		*/
 		Move multipleRead() override;
 
 		/**
 			Checks if the joystick is pressed up (Y-axis).
+
 			@return true - joystick is really pressed down,
 			false - joystick is not pressed.
 		*/
@@ -51,6 +63,7 @@ class YInverterJoystick final : public DelegateJoystick {
 
 		/**
 			Checks if the joystick is pressed down (Y-axis).
+
 			@return true - joystick is really pressed up,
 			false - joystick is not pressed.
 		*/
@@ -59,6 +72,8 @@ class YInverterJoystick final : public DelegateJoystick {
 	private:
 		/**
 			Inverts the input joystick Y-axis move.
+
+			@param move - the origin move to invert
 			@return value of pressing the joystick:
 				Move::UP - Y-axis is pressed down;
 				Move::DOWN - Y-axis is pressed up;
