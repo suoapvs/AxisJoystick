@@ -7,6 +7,7 @@
   Multiple reading of the joystick controller.
   If the joystick is clamped,
   returns a pressed button value.
+  
   Return value of pressing the remote control:
     Move::PRESS - button is pressed;
     Move::UP - X axis is pressed up;

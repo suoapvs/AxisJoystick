@@ -24,17 +24,16 @@
 
   To calibrate, call the calibrate() method:
 
-  void calibrate(low, high);
+  void calibrate(LOW, HIGH);
   or
-  void calibrate(low, high, deviation);
+  void calibrate(ADC_MIN, ADC_MAX, DEVIATION);
 
   Where:
-  low - the lower bound of the values range (default, 0);
-  high - the upper bound of the values range (default, 1023);
-  deviation - deviation from the value’s axis range (default, 100),
-  when the axis is considered activated:
-  axis value <= (low + deviation) or
-  axis value >= (high - deviation).
+  LOW - the lower bound of the values range (default, 100);
+  HIGH - the upper bound of the values range (default, 923);
+  ADC_MIN - min value of the board ADC (default for Arduino, 0);
+  ADC_MAX - max value of the board ADC (default for Arduino, 1023);
+  DEVIATION - deviation from the value’s axis range (default, 100).
 
   https://github.com/YuriiSalimov/AxisJoystick
 
@@ -47,9 +46,9 @@
 #define SW_PIN PA5
 #define VRX_PIN PA6
 #define VRY_PIN PA7
-#define LOW_RANGE 0
-#define HIGH_RANGE 4095
-#define RANGE_DIVITION 100
+#define STM32_ADC_MIN 0
+#define STM32_ADC_MAX 4095
+#define AXES_DEVIATION 100
 
 Joystick* joystic;
 
@@ -57,7 +56,14 @@ Joystick* joystic;
 void setup() {
   Serial.begin(9600);
   joystic = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
-  joystic->calibrate(LOW_RANGE, HIGH_RANGE, RANGE_DIVITION);
+  joystic->calibrate(STM32_ADC_MIN, STM32_ADC_MAX, AXES_DEVIATION);
+  /*
+    or
+    joystic->calibrate(
+      STM32_ADC_MIN + AXES_DEVIATION,
+      STM32_ADC_MAX - AXES_DEVIATION
+    );
+  */
 }
 
 // the loop function runs over and over again forever
