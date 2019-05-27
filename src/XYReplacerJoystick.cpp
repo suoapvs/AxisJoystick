@@ -4,29 +4,6 @@ XYReplacerJoystick::XYReplacerJoystick(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 
-Joystick::Move XYReplacerJoystick::singleRead() {
-	return replace(DelegateJoystick::singleRead());
-}
-
-Joystick::Move XYReplacerJoystick::multipleRead() {
-	return replace(DelegateJoystick::multipleRead());
-}
-
-Joystick::Move XYReplacerJoystick::replace(const Joystick::Move move) {
-	switch (move) {
-		case Move::UP:
-			return Move::RIGHT;
-		case Move::DOWN:
-			return Move::LEFT;
-		case Move::RIGHT:
-			return Move::UP;
-		case Move::LEFT:
-			return Move::DOWN;
-		default:
-			return move;
-	}
-}
-
 boolean XYReplacerJoystick::isUp() {
 	return DelegateJoystick::isRight();
 }
@@ -49,4 +26,27 @@ int XYReplacerJoystick::xAxis() {
 
 int XYReplacerJoystick::yAxis() {
 	return DelegateJoystick::xAxis();
+}
+
+Joystick::Move XYReplacerJoystick::singleRead() {
+	return replace(DelegateJoystick::singleRead());
+}
+
+Joystick::Move XYReplacerJoystick::multipleRead() {
+	return replace(DelegateJoystick::multipleRead());
+}
+
+Joystick::Move XYReplacerJoystick::replace(const Joystick::Move move) {
+	switch (move) {
+		case Move::UP:
+			return Move::RIGHT;
+		case Move::DOWN:
+			return Move::LEFT;
+		case Move::RIGHT:
+			return Move::UP;
+		case Move::LEFT:
+			return Move::DOWN;
+		default:
+			return move;
+	}
 }

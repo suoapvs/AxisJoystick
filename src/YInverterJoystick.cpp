@@ -4,6 +4,14 @@ YInverterJoystick::YInverterJoystick(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 
+boolean YInverterJoystick::isUp() {
+	return DelegateJoystick::isDown();
+}
+
+boolean YInverterJoystick::isDown() {
+	return DelegateJoystick::isUp();
+}
+
 Joystick::Move YInverterJoystick::singleRead() {
 	return invert(DelegateJoystick::singleRead());
 }
@@ -21,12 +29,4 @@ Joystick::Move YInverterJoystick::invert(const Joystick::Move move) {
 		default:
 			return move;
 	}
-}
-
-boolean YInverterJoystick::isUp() {
-	return DelegateJoystick::isDown();
-}
-
-boolean YInverterJoystick::isDown() {
-	return DelegateJoystick::isUp();
 }

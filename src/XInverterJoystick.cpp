@@ -4,6 +4,14 @@ XInverterJoystick::XInverterJoystick(Joystick* origin)
 	: DelegateJoystick(origin) {
 }
 
+boolean XInverterJoystick::isRight() {
+	return DelegateJoystick::isLeft();
+}
+
+boolean XInverterJoystick::isLeft() {
+	return DelegateJoystick::isRight();
+}
+
 Joystick::Move XInverterJoystick::singleRead() {
 	return invert(DelegateJoystick::singleRead());
 }
@@ -21,12 +29,4 @@ Joystick::Move XInverterJoystick::invert(const Joystick::Move move) {
 		default:
 			return move;
 	}
-}
-
-boolean XInverterJoystick::isRight() {
-	return DelegateJoystick::isLeft();
-}
-
-boolean XInverterJoystick::isLeft() {
-	return DelegateJoystick::isRight();
 }
