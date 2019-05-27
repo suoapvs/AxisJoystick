@@ -28,7 +28,8 @@ class DelegateJoystick : public Joystick {
 
 	protected:
 		/**
-			Constructor.
+			Constructor
+
 			@param origin - the origin joystick.
 		*/
 		DelegateJoystick(Joystick* origin);
@@ -66,7 +67,7 @@ class DelegateJoystick : public Joystick {
 
 		void calibrate(int low, int high) override;
 
-		void calibrate(int low, int high, int deviation) override;
+		void calibrate(int adcMin, int adcMax, int deviation) override;
 };
 
 #endif
