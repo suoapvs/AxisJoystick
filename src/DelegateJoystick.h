@@ -30,7 +30,7 @@ class DelegateJoystick : public Joystick {
 		/**
 			Constructor
 
-			@param origin - the origin joystick.
+			@param origin - the origin joystick (not NULL)
 		*/
 		DelegateJoystick(Joystick* origin);
 

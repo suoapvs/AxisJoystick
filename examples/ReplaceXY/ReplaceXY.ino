@@ -23,6 +23,7 @@ Joystick* xyReplacer;
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
+
   original = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
   xyReplacer = new XYReplacerJoystick(original);
 }
@@ -31,7 +32,8 @@ void setup() {
 void loop() {
   Serial.print("original: " + moveTitle(original->multipleRead()));
   Serial.println(" | replace XY: " + moveTitle(xyReplacer->multipleRead()));
-  delay(500); // To delay the output of information.
+
+  delay(500); // optionally, only to delay the output of information in the example
 }
 
 /**

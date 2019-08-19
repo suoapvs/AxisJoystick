@@ -1,7 +1,11 @@
+/**
+	Created by Yurii Salimov, December, 2018.
+	Released into the public domain.
+*/
 #include "XYReplacerJoystick.h"
 
 XYReplacerJoystick::XYReplacerJoystick(Joystick* origin)
-	: DelegateJoystick(origin) {
+: DelegateJoystick(origin) {
 }
 
 boolean XYReplacerJoystick::isUp() {
@@ -36,7 +40,7 @@ Joystick::Move XYReplacerJoystick::multipleRead() {
 	return replace(DelegateJoystick::multipleRead());
 }
 
-Joystick::Move XYReplacerJoystick::replace(const Joystick::Move move) {
+inline Joystick::Move XYReplacerJoystick::replace(const Joystick::Move move) {
 	switch (move) {
 		case Move::UP:
 			return Move::RIGHT;

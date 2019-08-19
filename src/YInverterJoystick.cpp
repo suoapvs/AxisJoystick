@@ -1,7 +1,11 @@
+/**
+	Created by Yurii Salimov, December, 2018.
+	Released into the public domain.
+*/
 #include "YInverterJoystick.h"
 
 YInverterJoystick::YInverterJoystick(Joystick* origin)
-	: DelegateJoystick(origin) {
+: DelegateJoystick(origin) {
 }
 
 boolean YInverterJoystick::isUp() {
@@ -20,7 +24,7 @@ Joystick::Move YInverterJoystick::multipleRead() {
 	return invert(DelegateJoystick::multipleRead());
 }
 
-Joystick::Move YInverterJoystick::invert(const Joystick::Move move) {
+inline Joystick::Move YInverterJoystick::invert(const Joystick::Move move) {
 	switch (move) {
 		case Move::UP:
 			return Move::DOWN;

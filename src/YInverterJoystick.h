@@ -1,5 +1,5 @@
 /**
-	YInverter.h - class-wrapper implements methods of the Joystick.h
+	YInverter - class-wrapper implements methods of the Joystick.h
 	interface, inverting Y-axis signal of the origin joystick.
 
 	v.2.0:
@@ -27,7 +27,7 @@ class YInverterJoystick final : public DelegateJoystick {
 		/**
 			Constructor
 
-			@param origin - the origin joystick.
+			@param origin - the origin joystick (not NULL)
 		*/
 		YInverterJoystick(Joystick* origin);
 
@@ -35,10 +35,10 @@ class YInverterJoystick final : public DelegateJoystick {
 			Single reading of the joystick controller.
 			Inverts the input joystick Y-axis move.
 
-			@return value of pressing the joystick:
-				Move::UP - Y-axis is pressed down;
-				Move::DOWN - Y-axis is pressed up;
-				else the input move.
+			@return value of pressing the joystick (never NULL):
+			Move::UP - Y-axis is pressed down;
+			Move::DOWN - Y-axis is pressed up;
+			else the input move.
 		*/
 		Move singleRead() override;
 
@@ -46,10 +46,10 @@ class YInverterJoystick final : public DelegateJoystick {
 			Multiple reading of the joystick controller.
 			Inverts the input joystick Y-axis move.
 
-			@return value of pressing the joystick:
-				Move::UP - Y-axis is pressed down;
-				Move::DOWN - Y-axis is pressed up;
-				else the input move.
+			@return value of pressing the joystick (never NULL):
+			Move::UP - Y-axis is pressed down;
+			Move::DOWN - Y-axis is pressed up;
+			else the input move.
 		*/
 		Move multipleRead() override;
 
@@ -73,13 +73,13 @@ class YInverterJoystick final : public DelegateJoystick {
 		/**
 			Inverts the input joystick Y-axis move.
 
-			@param move - the origin move to invert
-			@return value of pressing the joystick:
-				Move::UP - Y-axis is pressed down;
-				Move::DOWN - Y-axis is pressed up;
-				else the input move.
+			@param move - the origin move to invert (not NULL)
+			@return value of pressing the joystick (never NULL):
+			Move::UP - Y-axis is pressed down;
+			Move::DOWN - Y-axis is pressed up;
+			else the input move.
 		*/
-		Move invert(Move move);
+		inline Move invert(Move move);
 };
 
 #endif

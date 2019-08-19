@@ -7,7 +7,7 @@
   Multiple reading of the joystick controller.
   If the joystick is clamped,
   returns a pressed button value.
-  
+
   Return value of pressing the remote control:
     Move::PRESS - button is pressed;
     Move::UP - X axis is pressed up;
@@ -33,6 +33,7 @@ Joystick* joystick;
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
+
   joystick = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
 }
 
@@ -40,7 +41,8 @@ void setup() {
 void loop() {
   Serial.print("Joystick, Multiple Reading: ");
   Serial.println(moveTitle(joystick->multipleRead()));
-  delay(500); // To delay the output of information.
+
+  delay(500); // optionally, only to delay the output of information in the example
 }
 
 /**

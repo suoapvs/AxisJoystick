@@ -1,3 +1,7 @@
+/**
+	Created by Yurii Salimov, February, 2018.
+	Released into the public domain.
+*/
 #include "AxisJoystick.h"
 
 AxisJoystick::AxisJoystick(
@@ -41,7 +45,7 @@ boolean AxisJoystick::isUp() {
 }
 
 boolean AxisJoystick::isDown() {
-	return isLow(readVRy());
+return isLow(readVRy());
 }
 
 boolean AxisJoystick::isRight() {

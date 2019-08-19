@@ -1,5 +1,5 @@
 /**
-	XYReplacer.h - class-wrapper implements methods of the Joystick.h
+	XYReplacer - class-wrapper implements methods of the Joystick.h
 	interface, replacing X- and Y-axes signal of the origin joystick.
 
 	v.2.0:
@@ -27,7 +27,7 @@ class XYReplacerJoystick final : public DelegateJoystick {
 		/**
 			Constructor
 
-			@param origin - the origin joystick.
+			@param origin - the origin joystick (not NULL)
 		*/
 		XYReplacerJoystick(Joystick* origin);
 
@@ -35,12 +35,12 @@ class XYReplacerJoystick final : public DelegateJoystick {
 			Single reading of the joystick controller.
 			Replaces X- and Y-axis moves.
 
-			@return value of pressing the joystick:
-				Move::UP - X-axis is pressed right;
-				Move::DOWN - X-axis is pressed left;
-				Move::LEFT - Y-axis is pressed down;
-				Move::RIGHt - Y-axis is pressed up;
-				else the input move.
+			@return value of pressing the joystick (never NULL):
+			Move::UP - X-axis is pressed right;
+			Move::DOWN - X-axis is pressed left;
+			Move::LEFT - Y-axis is pressed down;
+			Move::RIGHt - Y-axis is pressed up;
+			else the input move.
 		*/
 		Move singleRead() override;
 
@@ -48,12 +48,12 @@ class XYReplacerJoystick final : public DelegateJoystick {
 			Multiple reading of the joystick controller.
 			Replaces X- and Y-axes moves.
 
-			@return value of pressing the joystick:
-				Move::UP - X-axis is pressed right;
-				Move::DOWN - X-axis is pressed left;
-				Move::LEFT - Y-axis is pressed down;
-				Move::RIGHt - Y-axis is pressed up;
-				else the input move.
+			@return value of pressing the joystick (never NULL):
+			Move::UP - X-axis is pressed right;
+			Move::DOWN - X-axis is pressed left;
+			Move::LEFT - Y-axis is pressed down;
+			Move::RIGHt - Y-axis is pressed up;
+			else the input move.
 		*/
 		Move multipleRead() override;
 
@@ -61,7 +61,7 @@ class XYReplacerJoystick final : public DelegateJoystick {
 			Checks if the joystick is pressed up (Y-axis).
 
 			@return true - joystick is really pressed right (X-axis),
-				false - joystick is not pressed.
+			false - joystick is not pressed.
 		*/
 		boolean isUp() override;
 
@@ -69,7 +69,7 @@ class XYReplacerJoystick final : public DelegateJoystick {
 			Checks if the joystick is pressed down (Y-axis).
 
 			@return true - joystick is really pressed left (X-axis),
-				false - joystick is not pressed.
+			false - joystick is not pressed.
 		*/
 		boolean isDown() override;
 
@@ -77,7 +77,7 @@ class XYReplacerJoystick final : public DelegateJoystick {
 			Checks if the joystick is pressed right (X-axis).
 
 			@return true - joystick is really pressed up (Y-axis),
-				false - joystick is not pressed.
+			false - joystick is not pressed.
 		*/
 		boolean isRight() override;
 
@@ -85,7 +85,7 @@ class XYReplacerJoystick final : public DelegateJoystick {
 			Checks if the joystick is pressed left (X-axis).
 
 			@return true - joystick is really pressed down (Y-axis),
-				false - joystick is not pressed.
+			false - joystick is not pressed.
 		*/
 		boolean isLeft() override;
 
@@ -110,15 +110,15 @@ class XYReplacerJoystick final : public DelegateJoystick {
 			Replaces the input move from X- to Y-axis
 			and from Y- to X-axis.
 
-			@param move - the origin move to invert
-			@return value of pressing the joystick:
-				Move::UP - X-axis is pressed right;
-				Move::DOWN - X-axis is pressed left;
-				Move::LEFT - Y-axis is pressed down;
-				Move::RIGHt - Y-axis is pressed up;
-				else the input move.
+			@param move - the origin move to invert (not NULL)
+			@return value of pressing the joystick (never NULL):
+			Move::UP - X-axis is pressed right;
+			Move::DOWN - X-axis is pressed left;
+			Move::LEFT - Y-axis is pressed down;
+			Move::RIGHt - Y-axis is pressed up;
+			else the input move.
 		*/
-		Move replace(Move move);
+		inline Move replace(Move move);
 };
 
 #endif

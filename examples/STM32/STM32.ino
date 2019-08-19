@@ -55,6 +55,7 @@ Joystick* joystic;
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
+
   joystic = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
   joystic->calibrate(STM32_ADC_MIN, STM32_ADC_MAX, AXES_DEVIATION);
   /*
@@ -69,8 +70,9 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
   Serial.print("SingleRead: " + moveTitle(joystic->singleRead()));
-  Serial.println(" | MultipleRead: " + moveTitle(joystic->multipleRead()));;
-  delay(500); // To delay the output of information.
+  Serial.println(" | MultipleRead: " + moveTitle(joystic->multipleRead()));
+
+  delay(500); // optionally, only to delay the output of information in the example
 }
 
 /**

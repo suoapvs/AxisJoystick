@@ -1,5 +1,5 @@
 /**
-	Joystick.h - interface describes a set of methods
+	Joystick - interface describes a set of methods
 	for working with a joystick controller.
 
 	v.2.1.0
@@ -28,18 +28,17 @@ class Joystick {
 		/**
 			Enums of a possible pressings
 			of the joystick controller:
-				PRESS - button is pressed;
-				UP - X axis is pressed UP;
-				DOWN - X axis is pressed DOWN;
-				RIGTH - Y axis is pressed RIGHT;
-				LEFT - Y axis is pressed LEFT;
-				NOT - not pressed.
+			PRESS - button is pressed;
+			UP - X axis is pressed UP;
+			DOWN - X axis is pressed DOWN;
+			RIGTH - Y axis is pressed RIGHT;
+			LEFT - Y axis is pressed LEFT;
+			NOT - not pressed.
 		*/
 		enum Move {
 			PRESS, UP, DOWN, RIGHT, LEFT, NOT
 		};
 
-	public:
 		/**
 			Single reading of the joystick controller.
 			If the joystick is clamped, the next
@@ -55,12 +54,12 @@ class Joystick {
 			returns a pressed button value.
 
 			@return value of pressing the joystick:
-				Move::PRESS - button is pressed;
-				Move::UP - Y-axis is pressed up;
-				Move::DOWN - Y-axis is pressed down;
-				Move::RIGTH - X-axis is pressed right;
-				Move::LEFT - X-axis is pressed left;
-				Move::NOT - not pressed.
+			Move::PRESS - button is pressed;
+			Move::UP - Y-axis is pressed up;
+			Move::DOWN - Y-axis is pressed down;
+			Move::RIGTH - X-axis is pressed right;
+			Move::LEFT - X-axis is pressed left;
+			Move::NOT - not pressed.
 		*/
 		virtual Move multipleRead() = 0;
 
@@ -153,10 +152,10 @@ class Joystick {
 			@param adcMin - min value of the board ADC;
 			@param adcMax - max value of the board ADC;
 			@param deviation - deviation from the value’s axis range,
-				when the axis is considered activated:
-				axis value <= (low + deviation)
-				or
-				axis value >= (high - deviation).
+			when the axis is considered activated:
+			axis value <= (low + deviation)
+			or
+			axis value >= (high - deviation).
 		*/
 		virtual void calibrate(int adcMin, int adcMax, int deviation) = 0;
 };

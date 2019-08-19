@@ -37,6 +37,7 @@ Joystick* joystic;
 // the setup function runs once when you press reset or power the board
 void setup() {
   Serial.begin(9600);
+
   joystic = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
   joystic->calibrate(ARDUINO_ADC_MIN, ARDUINO_ADC_MAX, RANGE_DEVIATION);
   /*
@@ -60,7 +61,8 @@ void loop() {
   Serial.print(" | VRx: " + String(joystic->readVRx()));
   Serial.print(" | VRy: " + String(joystic->readVRy()));
   Serial.println(" | SW: " + String(joystic->readSW()) + " |");
-  delay(500); // To delay the output of information.
+
+  delay(500); // optionally, only to delay the output of information in the example
 }
 
 /**

@@ -1,3 +1,7 @@
+/**
+	Created by Yurii Salimov, December, 2018.
+	Released into the public domain.
+*/
 #include "DelegateJoystick.h"
 
 DelegateJoystick::DelegateJoystick(Joystick* origin) {

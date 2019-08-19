@@ -1,5 +1,5 @@
 /**
-	AxisJoystick.h - class implements methods of the Joystick.h
+	AxisJoystick - class implements methods of the Joystick.h
 	interface for working with an analog joystick controller.
 
 	v.1.0.3:
@@ -34,19 +34,13 @@
 */
 #define JOYSTICK_AXIS_DEVIATION 100
 
-/**
-	Min value of Arduino ADC.
-*/
+// Min value of Arduino ADC.
 #define JOYSTICK_ADC_MIN 0
 
-/**
-	Max value of Arduino ADC.
-*/
+// Max value of Arduino ADC.
 #define JOYSTICK_ADC_MAX 1023
 
-/**
-	Signal when the joystick button is pressed.
-*/
+// Signal when the joystick button is pressed.
 #define JOYSTICK_BUTTON_PRESS_SIGNAL LOW
 
 class AxisJoystick final : public Joystick {
@@ -80,7 +74,7 @@ class AxisJoystick final : public Joystick {
 			If the joystick is clamped, the next
 			value of pressing - NOT.
 
-			@return value of pressing the joystick.
+			@return value of pressing the joystick (never NULL)
 		*/
 		Move singleRead() override;
 
@@ -89,13 +83,13 @@ class AxisJoystick final : public Joystick {
 			If the joystick is clamped,
 			returns a pressed button value.
 
-			@return value of pressing the joystick:
-				Move::PRESS - button is pressed;
-				Move::UP - Y-axis is pressed up;
-				Move::DOWN - Y-axis is pressed down;
-				Move::RIGTH - X-axis is pressed right;
-				Move::LEFT - X-axis is pressed left;
-				Move::NOT - not pressed.
+			@return value of pressing the joystick (never NULL):
+			Move::PRESS - button is pressed;
+			Move::UP - Y-axis is pressed up;
+			Move::DOWN - Y-axis is pressed down;
+			Move::RIGTH - X-axis is pressed right;
+			Move::LEFT - X-axis is pressed left;
+			Move::NOT - not pressed.
 		*/
 		Move multipleRead() override;
 
@@ -188,10 +182,10 @@ class AxisJoystick final : public Joystick {
 			@param adcMin - min value of the board ADC (default for Arduino, 0);
 			@param adcMax - max value of the board ADC (default for Arduino, 1023);
 			@param deviation - deviation from the value’s axis range (default, 100),
-				when the axis is considered activated:
-				axis value <= (low + deviation)
-				or
-				axis value >= (high - deviation).
+			when the axis is considered activated:
+			axis value <= (low + deviation)
+			or
+			axis value >= (high - deviation).
 		*/
 		void calibrate(int adcMin, int adcMax, int deviation) override;
 
