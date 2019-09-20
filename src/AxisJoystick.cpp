@@ -37,7 +37,7 @@ Joystick::Move AxisJoystick::multipleRead() {
 }
 
 boolean AxisJoystick::isPress() {
-	return readSW() == JOYSTICK_BUTTON_PRESS_SIGNAL;
+	return readSW() == BUTTON_PRESS_SIGNAL;
 }
 
 boolean AxisJoystick::isUp() {
@@ -45,7 +45,7 @@ boolean AxisJoystick::isUp() {
 }
 
 boolean AxisJoystick::isDown() {
-return isLow(readVRy());
+	return isLow(readVRy());
 }
 
 boolean AxisJoystick::isRight() {

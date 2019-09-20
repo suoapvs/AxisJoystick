@@ -18,6 +18,9 @@
 	v.2.2.1
 	- optimized methods for Joystick calibration.
 
+	v.2.2.2
+	Replaced "define" constants with "static const".
+
 	https://github.com/YuriiSalimov/AxisJoystick
 
 	Created by Yurii Salimov, February, 2018.
@@ -28,29 +31,26 @@
 
 #include "Joystick.h"
 
-/**
-	The value at which the joystick axis
-	is considered to be on.
-*/
-#define JOYSTICK_AXIS_DEVIATION 100
-
-// Min value of Arduino ADC.
-#define JOYSTICK_ADC_MIN 0
-
-// Max value of Arduino ADC.
-#define JOYSTICK_ADC_MAX 1023
-
-// Signal when the joystick button is pressed.
-#define JOYSTICK_BUTTON_PRESS_SIGNAL LOW
-
 class AxisJoystick final : public Joystick {
 
 	private:
+		/**
+			The value at which the joystick axis
+			is considered to be on.
+		*/
+		static const int AXIS_DEVIATION = 100;
+		// Min value of Arduino ADC.
+		static const int ADC_MIN = 0;
+		// Max value of Arduino ADC.
+		static const int ADC_MAX = 1023;
+		// Signal when the joystick button is pressed.
+		static const int BUTTON_PRESS_SIGNAL = LOW;
+
 		int SW_pin;
 		int VRx_pin;
 		int VRy_pin;
-		int min = JOYSTICK_ADC_MIN + JOYSTICK_AXIS_DEVIATION;
-		int max = JOYSTICK_ADC_MAX - JOYSTICK_AXIS_DEVIATION;
+		int min = ADC_MIN + AXIS_DEVIATION;
+		int max = ADC_MAX - AXIS_DEVIATION;
 
 		/**
 			The value for the temporary storage
