@@ -39,7 +39,7 @@ void setup() {
   Serial.begin(9600);
 
   joystic = new AxisJoystick(SW_PIN, VRX_PIN, VRY_PIN);
-  joystic->calibrate(ARDUINO_ADC_MIN, ARDUINO_ADC_MAX, RANGE_DEVIATION);
+  joystic->calibrate(ARDUINO_ADC_MIN, ARDUINO_ADC_MAX, AXES_DEVIATION);
   /*
     or
     joystic->calibrate(
