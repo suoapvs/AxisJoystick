@@ -3,10 +3,13 @@
 	for working with a joystick controller.
 
 	v.2.1.0
-	- added calibration methods for joystick axes.
+	- added calibration methods for joystick axes
 
 	v.2.2.1
-	- updated methods for Joystick calibration.
+	- updated methods for Joystick calibration
+
+	v.2.2.3
+	- added virtual destructor
 
 	https://github.com/YuriiSalimov/AxisJoystick
 
@@ -38,6 +41,12 @@ class Joystick {
 		enum Move {
 			PRESS, UP, DOWN, RIGHT, LEFT, NOT
 		};
+
+		/**
+      Destructor
+      Deletes Joystick instance.
+    */
+		virtual ~Joystick() {};
 
 		/**
 			Single reading of the joystick controller.
