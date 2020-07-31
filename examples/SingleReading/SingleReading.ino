@@ -20,6 +20,7 @@
   Created by Yurii Salimov, February, 2018.
   Released into the public domain.
 */
+#include <Arduino.h>
 #include <Joystick.h>
 #include <AxisJoystick.h>
 
